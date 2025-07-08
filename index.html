@@ -3,88 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Onroadcouple - Official Page</title>
+  <title>@onroadcouple</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #ffffff;
-      text-align: center;
-      padding: 20px;
+      background: #f9f9f9;
     }
 
-    .profile-img {
-      width: 160px;
-      height: 160px;
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 25px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+
+    .profile-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .profile-info img {
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
+    .channel-name {
+      font-size: 22px;
+      font-weight: 600;
     }
 
     .social-icons {
-      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
 
-    .social-icons a {
-      margin: 0 10px;
-      display: inline-block;
+    .social-icons a img {
+      width: 28px;
+      height: 28px;
     }
 
-    .social-icons img {
-      width: 32px;
-      height: 32px;
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1100px;
+      margin: auto;
     }
 
-    .main-link-image {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 16px;
-      margin-top: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
+    .tile {
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
     }
 
-    .main-link-image:hover {
+    .tile:hover {
       transform: scale(1.02);
     }
 
+    .tile img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     @media (max-width: 600px) {
-      h1 { font-size: 20px; }
-      .main-link-image { border-radius: 12px; }
+      .channel-name {
+        font-size: 18px;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .social-icons {
+        justify-content: flex-start;
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Profile photo -->
-  <img class="profile-img" src="https://your-profile-image-url.com/photo.jpg" alt="Onroadcouple Profile Photo">
-
-  <!-- Handle name -->
-  <h1>@onroadcouple</h1>
-
-  <!-- Social media icons -->
-  <div class="social-icons">
-    <a href="https://instagram.com/yourhandle" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-    </a>
-    <a href="https://youtube.com/yourchannel" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-    </a>
-    <a href="https://facebook.com/yourhandle" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
-    </a>
+  <!-- Header -->
+  <div class="header">
+    <div class="profile-info">
+      <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=faces&fit=crop&h=100&w=100" alt="Profile">
+      <div class="channel-name">@onroadcouple</div>
+    </div>
+    <div class="social-icons">
+      <a href="https://instagram.com/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+      </a>
+      <a href="https://youtube.com/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+      </a>
+      <a href="https://facebook.com/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png" alt="Facebook">
+      </a>
+    </div>
   </div>
 
-  <!-- Clickable image link -->
-  <a href="https://your-redirect-link.com" target="_blank">
-    <img class="main-link-image" src="https://your-omelette-image-link.com/image.jpg" alt="Stuff Chicken Omelette">
-  </a>
+  <!-- Tiles -->
+  <div class="tiles">
+    <div class="tile">
+      <a href="https://example.com/ride1" target="_blank">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Ride Adventure">
+      </a>
+    </div>
+    <div class="tile">
+      <a href="https://example.com/trek2" target="_blank">
+        <img src="https://images.unsplash.com/photo-1560963689-b9f1f6b1e0e4?auto=format&fit=crop&w=800&q=80" alt="Trekking Spot">
+      </a>
+    </div>
+    <div class="tile">
+      <a href="https://example.com/food3" target="_blank">
+        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=800&q=80" alt="Local Food">
+      </a>
+    </div>
+  </div>
 
 </body>
 </html>
