@@ -9,6 +9,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>On Road Couple</title>
   <meta name="description" content="On Road Couple – Travel | Trek | Ride – by Harshada & Sujeet. Watch our vlogs and explore travel experiences.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     * {
@@ -25,20 +26,17 @@
     }
 
     .cover {
-      height: 320px;
+      height: 300px;
       background: url('/cover.jpg') center center/cover no-repeat;
-      position: relative;
     }
 
     .profile-section {
-      max-width: 900px;
-      margin: -80px auto 0;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
       display: flex;
       align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       position: relative;
     }
 
@@ -47,18 +45,19 @@
       height: 140px;
       background: url('/profile.jpg') center center/cover;
       border-radius: 50%;
-      border: 4px solid #fff;
-      margin-right: 20px;
-      flex-shrink: 0;
+      border: 5px solid #fff;
+      margin-top: -70px;
     }
 
     .profile-info {
-      flex-grow: 1;
+      flex: 1;
+      margin-left: 20px;
+      min-width: 200px;
     }
 
     .profile-info h1 {
-      font-size: 24px;
-      margin-bottom: 6px;
+      font-size: 26px;
+      font-weight: bold;
     }
 
     .profile-info p {
@@ -69,6 +68,7 @@
     .social-buttons {
       display: flex;
       gap: 10px;
+      margin-top: 10px;
     }
 
     .social-buttons a {
@@ -142,7 +142,6 @@
       overflow: hidden;
       position: relative;
     }
-
     .card-img-container img {
       width: 100%;
       height: 100%;
@@ -172,46 +171,36 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 600px) {
-      .cover { display: none; }
+    @media (max-width: 768px) {
+      .cover { height: 200px; }
       .profile-section {
         flex-direction: column;
-        text-align: center;
         align-items: center;
-        margin-top: 20px;
-      }
-      .profile-pic {
-        margin: -70px 0 10px;
+        text-align: center;
       }
       .profile-info {
-        margin: 0;
-      }
-      .social-buttons {
-        margin: 10px 0 0;
-        justify-content: center;
+        margin-left: 0;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Cover / Profile -->
   <div class="cover"></div>
   <div class="profile-section">
     <div class="profile-pic"></div>
     <div class="profile-info">
       <h1>On Road Couple</h1>
       <p>Harshada & Sujeet — Travel | Trek | Ride</p>
-    </div>
-    <div class="social-buttons">
-      <a href="mailto:brand.onroadcouple@gmail.com" class="email" title="Email"><i class="bi bi-envelope-fill"></i></a>
-      <a href="https://youtube.com/@onroadcouple" class="youtube" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
-      <a href="https://instagram.com/onroadcouple" class="instagram" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://facebook.com/onroadcouple" class="facebook" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+      <div class="social-buttons">
+        <a href="mailto:brand.onroadcouple@gmail.com" class="email" title="Email"><i class="bi bi-envelope-fill"></i></a>
+        <a href="https://youtube.com/@onroadcouple" class="youtube" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
+        <a href="https://instagram.com/onroadcouple" class="instagram" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://facebook.com/onroadcouple" class="facebook" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+      </div>
     </div>
   </div>
 
-  <!-- Latest Vlogs Section -->
   <section>
     <h2>🎥 Latest Vlogs</h2>
     <div class="content-grid">
@@ -229,7 +218,7 @@
           <img src="/OnRoadCoupleThumb.png" alt="Sahyadri Trek" loading="lazy">
         </div>
         <div class="card-content">
-          <h3>Get to know faces behind the ‪<a href="https://www.youtube.com/@OnRoadCouple">@OnRoadCouple</a>‬</h3>
+          <h3>Get to know faces behind the <a href="https://www.youtube.com/@OnRoadCouple">@OnRoadCouple</a></h3>
           <a href="https://youtu.be/z5xlfU0N0Io?si=r35GpGSR5uzHJAcb" target="_blank">Watch on YouTube</a>
         </div>
       </div>
@@ -245,44 +234,16 @@
     </div>
   </section>
 
-  <!-- Travel Series Section -->
   <section>
     <h2>🌄 30 Days 30 Monsoon Spots Series</h2>
     <div class="content-grid">
       <div class="content-card">
         <div class="card-img-container">
-          <img src="https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg" alt="Varasgaon Waterfall" loading="lazy">
+          <img src="/tr-serise-1.JPG" alt="varasgaon waterfall" loading="lazy">
         </div>
         <div class="card-content">
           <h3>वरसगाव धबधबा</h3>
           <a href="https://maps.app.goo.gl/MaS98yMEJqywjrLu9" target="_blank">View on Map</a>
-        </div>
-      </div>
-      <div class="content-card">
-        <div class="card-img-container">
-          <img src="https://images.pexels.com/photos/618833/pexels-photo-618833.jpeg" alt="Monsoon Trek" loading="lazy">
-        </div>
-        <div class="card-content">
-          <h3>सोंडाई गड</h3>
-          <a href="https://maps.app.goo.gl/YtRhNmHDPkHgby5g7" target="_blank">View on Map</a>
-        </div>
-      </div>
-      <div class="content-card">
-        <div class="card-img-container">
-          <img src="https://images.pexels.com/photos/1619311/pexels-photo-1619311.jpeg" alt="Rainy forest" loading="lazy">
-        </div>
-        <div class="card-content">
-          <h3>अंधारबन</h3>
-          <a href="https://maps.app.goo.gl/PRRj2WEKefdpB6Sf6" target="_blank">View on Map</a>
-        </div>
-      </div>
-      <div class="content-card">
-        <div class="card-img-container">
-          <img src="https://images.pexels.com/photos/1567080/pexels-photo-1567080.jpeg" alt="Devkund waterfall" loading="lazy">
-        </div>
-        <div class="card-content">
-          <h3>देवकुंड धबधबा</h3>
-          <a href="https://maps.app.goo.gl/wzk5ZVVh3BUDcoZG7" target="_blank">View on Map</a>
         </div>
       </div>
     </div>
