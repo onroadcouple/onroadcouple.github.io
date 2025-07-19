@@ -1,180 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7TLKB4XDC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7TLKB4XDC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E7TLKB4XDC');
+  </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On Road Couple</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+      }
 
-  gtag('config', 'G-E7TLKB4XDC');
-</script>
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>On Road Couple</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
+      body {
+        background-color: #f0f2f5;
+      }
 
-    body {
-      background-color: #f0f2f5;
-    }
-
-    .cover {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      background: url('/cover.jpg') center center/cover;
-    }
-
-    .profile-section {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
-      background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      position: relative;
-    }
-
-    .profile-pic {
-      width: 160px;
-      height: 160px;
-      border: 6px solid white;
-      border-radius: 50%;
-      background: url('/profile.jpg') center center/cover;
-      position: absolute;
-      top: -80px;
-      left: 20px;
-    }
-
-    .profile-info {
-      margin-left: 190px;
-    }
-
-    .profile-info h1 {
-      font-size: 26px;
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-
-    .profile-info p {
-      font-size: 14px;
-      color: #777;
-    }
-
-    .social-buttons {
-      margin-left: auto;
-      display: flex;
-      gap: 10px;
-    }
-
-    .social-buttons a {
-      padding: 10px;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      color: white;
-    }
-
-    .social-buttons a.email {
-      background-color: #6c757d;
-    }
-
-    .social-buttons a.youtube {
-      background-color: #FF0000;
-    }
-
-    .social-buttons a.instagram {
-      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    }
-
-    .social-buttons a.facebook {
-      background-color: #1877f2;
-    }
-
-    .gallery {
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .gallery a img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
-
-    .gallery a img:hover {
-      transform: scale(1.02);
-    }
-
-    @media (max-width: 600px) {
       .cover {
-        display: none;
+        position: relative;
+        width: 100%;
+        height: 300px;
+        background: url('/cover.jpg') center center/cover;
       }
+
       .profile-section {
-        flex-direction: column;
+        display: flex;
         align-items: center;
-        text-align: center;
+        gap: 20px;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        position: relative;
       }
+
       .profile-pic {
-        position: static;
+        width: 160px;
+        height: 160px;
+        border: 6px solid white;
+        border-radius: 50%;
+        background: url('/profile.jpg') center center/cover;
+        position: absolute;
+        top: -80px;
+        left: 20px;
+      }
+
+      .profile-info {
+        margin-left: 190px;
+      }
+
+      .profile-info h1 {
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .profile-info p {
+        font-size: 14px;
+        color: #777;
+      }
+
+      .social-buttons {
+        margin-left: auto;
+        display: flex;
+        gap: 10px;
+      }
+
+      .social-buttons a {
+        padding: 10px;
+        border-radius: 50%;
+        text-decoration: none;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: white;
+      }
+
+      .social-buttons a.email {
+        background-color: #6c757d;
+      }
+
+      .social-buttons a.youtube {
+        background-color: #FF0000;
+      }
+
+      .social-buttons a.instagram {
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      }
+
+      .social-buttons a.facebook {
+        background-color: #1877f2;
+      }
+
+      .gallery {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .gallery h2 {
+        grid-column: 1 / -1;
+        font-size: 22px;
         margin-bottom: 10px;
       }
-      .profile-info {
-        margin: 0;
+
+      .gallery a img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        transition: transform 0.3s;
       }
-      .social-buttons {
-        margin-left: 0;
-        justify-content: center;
-        flex-wrap: wrap;
+
+      .gallery a img:hover {
+        transform: scale(1.02);
       }
-    }
-  </style>
-</head>
-<body>
 
-  <!-- Cover Photo -->
-  <div class="cover"></div>
+      @media (max-width: 600px) {
+        .cover {
+          display: none;
+        }
+        .profile-section {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .profile-pic {
+          position: static;
+          margin-bottom: 10px;
+        }
+        .profile-info {
+          margin: 0;
+        }
+        .social-buttons {
+          margin-left: 0;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
 
-  <!-- Profile Section -->
-  <div class="profile-section">
-    <div class="profile-pic"></div>
-    <div class="profile-info">
-      <h1>On Road Couple</h1>
-      <p>Harshada & Sujeet - Travel | Trek | Ride</p>
+    <!-- Cover Photo -->
+    <div class="cover"></div>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <div class="profile-pic"></div>
+      <div class="profile-info">
+        <h1>On Road Couple</h1>
+        <p>Harshada & Sujeet - Travel | Trek | Ride</p>
+      </div>
+      <div class="social-buttons">
+        <a href="mailto:brand.onroadcouple@gmail.com" class="email"><i class="bi bi-envelope-fill"></i></a>
+        <a href="https://youtube.com/@onroadcouple" target="_blank" class="youtube"><i class="bi bi-youtube"></i></a>
+        <a href="https://instagram.com/onroadcouple" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://facebook.com/onroadcouple" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+      </div>
     </div>
-    <div class="social-buttons">
-      <a href="mailto:brand.onroadcouple@gmail.com" class="email"><i class="bi bi-envelope-fill"></i></a>
-      <a href="https://youtube.com/@onroadcouple" target="_blank" class="youtube"><i class="bi bi-youtube"></i></a>
-      <a href="https://instagram.com/onroadcouple" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://facebook.com/onroadcouple" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+
+    <!-- Gallery Section -->
+    <div class="gallery">
+      <a href="https://youtu.be/IQze6y2uXfo?si=Kdo9h2ap14CB1PVG" target="_blank">
+        <img src="/tile-1.JPG" alt="Adventure Ride">
+      </a>
+      <a href="https://maps.app.goo.gl/5fHqYVbNfMyvFfGy7" target="_blank">
+        <img src="/tile-2.JPG" alt="Trek Vlog">
+      </a>
     </div>
-  </div>
 
-  <!-- Gallery Tiles -->
-  <div class="gallery">
-    <a href="https://youtu.be/IQze6y2uXfo?si=Kdo9h2ap14CB1PVG" target="_blank">
-      <img src="/tile-1.JPG" alt="Adventure Ride">
-    </a>
-    <a href="https://maps.app.goo.gl/5fHqYVbNfMyvFfGy7" target="_blank">
-      <img src="/tile-2.JPG" alt="Trek Vlog">
-    </a>
-  </div>
+    <!-- 30 Days 30 Monsoon Spots Section -->
+    <div class="gallery">
+      <h2>30 Days 30 Monsoon Spots</h2>
 
-</body>
+      <!-- Repeat below block with your real images and links -->
+      <a href="https://maps.app.goo.gl/example1" target="_blank"><img src="/tile-3.jpg" alt="Devkund Waterfall"></a>
+      <a href="https://maps.app.goo.gl/example2" target="_blank"><img src="/tile-4.jpg" alt="Andharban Forest"></a>
+      <a href="https://maps.app.goo.gl/example3" target="_blank"><img src="/tile-5.jpg" alt="Tamhini Ghat"></a>
+      <a href="https://maps.app.goo.gl/example4" target="_blank"><img src="/tile-6.jpg" alt="Kataldhar Waterfall"></a>
+      <a href="https://maps.app.goo.gl/example5" target="_blank"><img src="/tile-7.jpg" alt="Bhivpuri Waterfall"></a>
+      <a href="https://maps.app.goo.gl/example6" target="_blank"><img src="/tile-8.jpg" alt="Varandha Ghat"></a>
+      <a href="https://maps.app.goo.gl/example7" target="_blank"><img src="/tile-9.jpg" alt="Malshej Ghat"></a>
+      <a href="https://maps.app.goo.gl/example8" target="_blank"><img src="/tile-10.jpg" alt="Kune Falls Lonavala"></a>
+      <a href="https://maps.app.goo.gl/example9" target="_blank"><img src="/tile-11.jpg" alt="Thoseghar Waterfall"></a>
+      <a href="https://maps.app.goo.gl/example10" target="_blank"><img src="/tile-12.jpg" alt="Chinchoti Waterfall"></a>
+      <a href="https://maps.app.goo.gl/example11" target="_blank"><img src="/tile-13.jpg" alt="Pandavkada Falls"></a>
+      <a href="https://maps.app.goo.gl/example12" target="_blank"><img src="/tile-14.jpg" alt="Pateshwar"></a>
+      <a href="https://maps.app.goo.gl/example13" target="_blank"><img src="/tile-15.jpg" alt="Raigad Fort"></a>
+      <a href="https://maps.app.goo.gl/example14" target="_blank"><img src="/tile-16.jpg" alt="Visapur Trek"></a>
+      <a href="https://maps.app.goo.gl/example15" target="_blank"><img src="/tile-17.jpg" alt="Lohagad Fort"></a>
+      <a href="https://maps.app.goo.gl/example16" target="_blank"><img src="/tile-18.jpg" alt="Shivtharghal Caves"></a>
+      <a href="https://maps.app.goo.gl/example17" target="_blank"><img src="/tile-19.jpg" alt="Madhe Ghat"></a>
+      <a href="https://maps.app.goo.gl/example18" target="_blank"><img src="/tile-20.jpg" alt="Dudhsagar Falls (Karnataka Border)"></a>
+      <a href="https://maps.app.goo.gl/example19" target="_blank"><img src="/tile-21.jpg" alt="Kaas Plateau"></a>
+      <a href="https://maps.app.goo.gl/example20" target="_blank"><img src="/tile-22.jpg" alt="Chikhaldara"></a>
+      <a href="https://maps.app.goo.gl/example21" target="_blank"><img src="/tile-23.jpg" alt="Mulshi Dam"></a>
+      <a href="https://maps.app.goo.gl/example22" target="_blank"><img src="/tile-24.jpg" alt="Rajmachi Point"></a>
+      <a href="https://maps.app.goo.gl/example23" target="_blank"><img src="/tile-25.jpg" alt="Tapola Lake"></a>
+      <a href="https://maps.app.goo.gl/example24" target="_blank"><img src="/tile-26.jpg" alt="Kaas Pathar"></a>
+      <a href="https://maps.app.goo.gl/example25" target="_blank"><img src="/tile-27.jpg" alt="Bhandardara Lake"></a>
+      <a href="https://maps.app.goo.gl/example26" target="_blank"><img src="/tile-28.jpg" alt="Panhala Fort"></a>
+      <a href="https://maps.app.goo.gl/example27" target="_blank"><img src="/tile-29.jpg" alt="Kundalika Valley"></a>
+      <a href="https://maps.app.goo.gl/example28" target="_blank"><img src="/tile-30.jpg" alt="Ahupe Ghat"></a>
+      <a href="https://maps.app.goo.gl/example29" target="_blank"><img src="/tile-31.jpg" alt="Panchgani Table Land"></a>
+      <a href="https://maps.app.goo.gl/example30" target="_blank"><img src="/tile-32.jpg" alt="Harishchandragad Monsoon Trek"></a>
+    </div>
+
+  </body>
 </html>
