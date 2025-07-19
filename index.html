@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>On Road Couple</title>
-  <meta name="description" content="On Road Couple – Travel | Trek | Ride – by Harshada & Sujeet. Watch our vlogs and explore real travel experiences across India.">
+  <meta name="description" content="On Road Couple – Travel | Trek | Ride – by Harshada & Sujeet. Watch our vlogs and explore travel experiences.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     * {
@@ -20,7 +20,6 @@
       line-height: 1.6;
     }
 
-    /* Header Cover */
     .cover {
       height: 300px;
       background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200') center center/cover no-repeat;
@@ -90,12 +89,12 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
-    /* Section Headings */
     section {
       padding: 40px 20px;
       background-color: #fff;
       margin-bottom: 20px;
     }
+
     section h2 {
       font-size: 22px;
       border-bottom: 2px solid #eee;
@@ -103,13 +102,12 @@
       margin-bottom: 20px;
     }
 
-    /* Grid Tiles / Cards */
     .content-grid {
       display: grid;
       gap: 20px;
       max-width: 1440px;
       margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 
     .content-card {
@@ -120,27 +118,41 @@
       transition: transform 0.3s ease;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      padding-bottom: 12px;
     }
 
     .content-card:hover {
       transform: scale(1.03);
     }
 
-    .content-card img {
+    .card-img-container {
       width: 100%;
-      aspect-ratio: 3/2;
+      aspect-ratio: 16/9;
+      background: #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-img-container img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       display: block;
-      background: #ccc;
     }
 
     .card-content {
-      padding: 14px 16px;
+      width: 95%;
+      margin-top: 10px;
+      text-align: center;
     }
 
     .card-content h3 {
       font-size: 15px;
       margin: 0 0 8px;
+      font-weight: 600;
     }
 
     .card-content a {
@@ -160,16 +172,13 @@
         text-align: center;
         align-items: center;
       }
-
       .profile-pic {
         position: static;
         margin-bottom: 10px;
       }
-
       .profile-info {
         margin-left: 0;
       }
-
       .social-buttons {
         margin: 10px 0 0;
         justify-content: center;
@@ -179,7 +188,7 @@
 </head>
 <body>
 
-  <!-- Header / Profile -->
+  <!-- Cover / Profile -->
   <div class="cover"></div>
   <div class="profile-section">
     <div class="profile-pic"></div>
@@ -200,25 +209,57 @@
     <h2>🎥 Latest Vlogs</h2>
     <div class="content-grid">
       <div class="content-card">
-        <img src="/tile-1.JPG" alt="Adventure Ride Thumbnail" loading="lazy">
+        <div class="card-img-container">
+          <img src="/tile-1.JPG" alt="Adventure Ride Thumbnail" loading="lazy">
+        </div>
         <div class="card-content">
           <h3>Adventure Ride to the Mountains</h3>
-          <a href="https://youtu.be/IQze6y2uXfo?si=Kdo9h2ap14CB1PVG" target="_blank">Watch on YouTube</a>
-        </div>
-      </div>
-      <!-- Add more vlog cards below -->
-      <div class="content-card">
-        <img src="https://images.unsplash.com/photo-1593719341613-ac3de43cf1b4?w=600" alt="Beach Ride" loading="lazy">
-        <div class="card-content">
-          <h3>Beachside Morning Ride</h3>
-          <a href="https://youtu.be/dummyvlog1" target="_blank">Watch on YouTube</a>
+          <a href="https://youtu.be/IQze6y2uXfo" target="_blank">Watch on YouTube</a>
         </div>
       </div>
       <div class="content-card">
-        <img src="https://images.unsplash.com/photo-1532641145762-f4d5f7470f82?w=600" alt="Rain Ride" loading="lazy">
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1508610048659-a06b669e9a62?w=800" alt="Beach Ride" loading="lazy">
+        </div>
         <div class="card-content">
-          <h3>Rainy Day Trekking</h3>
-          <a href="https://youtu.be/dummyvlog2" target="_blank">Watch on YouTube</a>
+          <h3>Scenic Beachside Ride</h3>
+          <a href="https://youtube.com" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=800" alt="Monsoon Drive" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3>Monsoon Drive Through Hills</h3>
+          <a href="https://youtube.com" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1520963922071-983c7c3a17dc?w=800" alt="Forest Trek" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3>Forest Trek Vlog</h3>
+          <a href="https://youtube.com" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1518659526055-cb00fb010d1b?w=800" alt="Camping Night" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3>Chilly Night Camping</h3>
+          <a href="https://youtube.com" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-img-container">
+          <img src="https://images.pexels.com/photos/340835/pexels-photo-340835.jpeg?w=800" alt="Viewpoint Adventure" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3>Viewpoint Monsoon Adventure</h3>
+          <a href="https://youtube.com" target="_blank">Watch on YouTube</a>
         </div>
       </div>
     </div>
@@ -229,25 +270,57 @@
     <h2>🌄 Travel Series</h2>
     <div class="content-grid">
       <div class="content-card">
-        <img src="/tile-2.JPG" alt="Sahyadri Trek" loading="lazy">
+        <div class="card-img-container">
+          <img src="/tile-2.JPG" alt="Sahyadri Trek" loading="lazy">
+        </div>
         <div class="card-content">
-          <h3>Sahyadri Mountain Trek</h3>
+          <h3>Sahyadri Fort Trail</h3>
           <a href="https://maps.app.goo.gl/5fHqYVbNfMyvFfGy7" target="_blank">View on Map</a>
         </div>
       </div>
-      <!-- Add more series cards below -->
       <div class="content-card">
-        <img src="https://cdn.pixabay.com/photo/2016/03/09/09/17/camp-1245789_1280.jpg" alt="Forest Camping" loading="lazy">
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1587502537745-2874c1e2c2c8?w=800" alt="Western Ghats" loading="lazy">
+        </div>
         <div class="card-content">
-          <h3>Camping in Lonavala</h3>
-          <a href="https://maps.app.goo.gl/fakecamp1" target="_blank">View on Map</a>
+          <h3>Western Ghats Slopes</h3>
+          <a href="https://maps.app.goo.gl" target="_blank">View on Map</a>
         </div>
       </div>
       <div class="content-card">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=600" alt="Mountain Trail" loading="lazy">
+        <div class="card-img-container">
+          <img src="https://images.pexels.com/photos/416920/pexels-photo-416920.jpeg?w=800" alt="Hilltop Viewpoint" loading="lazy">
+        </div>
         <div class="card-content">
-          <h3>Trek to Valley View Hill</h3>
-          <a href="https://maps.app.goo.gl/fakehill1" target="_blank">View on Map</a>
+          <h3>Hilltop Moments</h3>
+          <a href="https://maps.app.goo.gl" target="_blank">View on Map</a>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-img-container">
+          <img src="https://cdn.pixabay.com/photo/2019/04/07/15/10/road-4106853_1280.jpg" alt="Road View" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3>Long Highway Stretch</h3>
+          <a href="https://maps.app.goo.gl" target="_blank">View on Map</a>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-img-container">
+          <img src="https://cdn.pixabay.com/photo/2020/06/18/21/25/trek-5315193_1280.jpg" alt="Hidden Forest Path" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3>Hidden Trek Path</h3>
+          <a href="https://maps.app.goo.gl" target="_blank">View on Map</a>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1465101178521-c1a106c1acc4?w=800" alt="Valley Trek" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3>Valley of Flowers Trek</h3>
+          <a href="https://maps.app.goo.gl" target="_blank">View on Map</a>
         </div>
       </div>
     </div>
