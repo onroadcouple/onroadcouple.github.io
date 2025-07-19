@@ -8,67 +8,80 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <title>On Road Couple</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="On Road Couple – Travel | Trek | Ride – by Harshada & Sujeet. Watch our vlogs and explore travel experiences.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+    html, body {
+      height:100%;
+      box-sizing:border-box;
     }
-
     body {
       background: #f0f2f5;
       color: #333;
       line-height: 1.6;
+      min-height: 100vh;
     }
 
     .cover {
+      width: 100vw;
       height: 300px;
-      background: url('/cover.jpg') center center/cover no-repeat;
+      overflow: hidden;
+      position: relative;
+      background: #111;
+      margin-bottom: 0;
+    }
+    .cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      vertical-align: middle;
+      display: block;
     }
 
+    @media (max-width: 600px) {
+      .cover { display: none !important; }
+    }
+    /* Profile Section */
     .profile-section {
       display: flex;
       align-items: center;
+      background: #fff;
       padding: 20px;
-      background-color: #fff;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       position: relative;
+      flex-wrap: wrap;
     }
-
     .profile-pic {
       width: 140px;
       height: 140px;
       background: url('/profile.jpg') center center/cover;
       border-radius: 50%;
       border: 5px solid #fff;
-      position: absolute;
-      top: -70px;
-      left: 20px;
+      margin-right: 28px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
     }
-
     .profile-info {
-      margin-left: 180px;
+      margin-left: 0;
+      min-width: 190px;
+      flex: 1 1 220px;
     }
-
     .profile-info h1 {
       font-size: 26px;
       font-weight: bold;
     }
-
     .profile-info p {
       font-size: 14px;
       color: #555;
     }
-
     .social-buttons {
       margin-left: auto;
       display: flex;
       gap: 10px;
+      align-items: center;
     }
-
     .social-buttons a {
       width: 36px;
       height: 36px;
@@ -78,58 +91,52 @@
       color: white;
       border-radius: 50%;
       font-size: 18px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .social-buttons a.youtube { background-color: #FF0000; }
     .social-buttons a.facebook { background-color: #1877f2; }
     .social-buttons a.instagram {
       background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     }
     .social-buttons a.email { background-color: #6c757d; }
-
     .social-buttons a:hover {
-      transform: scale(1.15);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      transform: scale(1.12);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.11);
     }
-
-    section {
-      padding: 40px 20px;
-      background-color: #fff;
-      margin-bottom: 20px;
-    }
-
-    section h2 {
-      font-size: 22px;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 6px;
-      margin-bottom: 20px;
-    }
-
+    /* Content Grid (RESPONSIVE) */
     .content-grid {
       display: grid;
       gap: 20px;
-      max-width: 1440px;
+      max-width: 1400px;
       margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(6, 1fr);
     }
-
+    @media (max-width: 1200px) {
+      .content-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .content-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .content-grid { grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 480px) {
+      .content-grid { grid-template-columns: 1fr;}
+    }
     .content-card {
-      background-color: #fafafa;
+      background: #fafafa;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      padding-bottom: 12px;
+      align-items: stretch;
+      padding-bottom: 10px;
     }
-
     .content-card:hover {
       transform: scale(1.03);
     }
-
     .card-img-container {
       width: 100%;
       aspect-ratio: 16/9;
@@ -146,54 +153,56 @@
       object-fit: cover;
       display: block;
     }
-
     .card-content {
       width: 95%;
-      margin-top: 10px;
+      margin: 12px auto 0;
       text-align: center;
     }
-
     .card-content h3 {
       font-size: 15px;
-      margin: 0 0 8px;
+      margin: 0 0 7px;
       font-weight: 600;
+      line-height: 1.25;
     }
-
     .card-content a {
       font-size: 14px;
       color: #007bff;
       text-decoration: none;
+      word-break: break-all;
     }
-
     .card-content a:hover {
       text-decoration: underline;
     }
-
-    @media (max-width: 600px) {
-      .cover { display: none; }
-      .profile-section {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-      }
-      .profile-pic {
-        position: static;
-        margin-bottom: 10px;
-      }
-      .profile-info {
-        margin-left: 0;
-      }
-      .social-buttons {
-        margin: 10px 0 0;
-        justify-content: center;
-      }
+    section {
+      padding: 36px 12px;
+      background: #fff;
+      margin-bottom: 20px;
+    }
+    section h2 {
+      font-size: 21px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 7px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 900px) {
+      .profile-section {flex-direction: column; align-items: center; text-align: center;}
+      .profile-pic {margin-right: 0; margin-bottom: 12px;}
+      .social-buttons {margin-left: 0; margin-top: 8px; justify-content: center;}
+    }
+    @media (max-width: 480px) {
+      .profile-section {padding: 16px 6px;}
+      section {padding: 28px 3vw;}
+      .card-content {width: 99%;}
     }
   </style>
 </head>
 <body>
+  <!-- Cover using <img> for best fit and mobile hide -->
+  <div class="cover">
+    <img src="/cover.jpg" alt="On Road Couple cover" />
+  </div>
 
-  <!-- Cover / Profile -->
-  <div class="cover"></div>
+  <!-- Profile -->
   <div class="profile-section">
     <div class="profile-pic"></div>
     <div class="profile-info">
@@ -208,11 +217,10 @@
     </div>
   </div>
 
-  <!-- Latest Vlogs Section -->
+  <!-- Latest Vlogs -->
   <section>
     <h2>🎥 Latest Vlogs</h2>
     <div class="content-grid">
-      
       <div class="content-card">
         <div class="card-img-container">
           <img src="/tile-1.JPG" alt="Bhivegaon waterfall" loading="lazy">
@@ -224,28 +232,29 @@
       </div>
       <div class="content-card">
         <div class="card-img-container">
-          <img src="/OnRoadCoupleThumb.png" alt="Sahyadri Trek" loading="lazy">
+          <img src="/OnRoadCoupleThumb.png" alt="faces behind @OnRoadCouple" loading="lazy">
         </div>
         <div class="card-content">
-          <h3>Get to know faces behind the ‪<a href="https://www.youtube.com/@OnRoadCouple">@OnRoadCouple</a>‬</h3>
+          <h3>Get to know faces behind the <a href="https://www.youtube.com/@OnRoadCouple" target="_blank">@OnRoadCouple</a></h3>
           <a href="https://youtu.be/z5xlfU0N0Io?si=r35GpGSR5uzHJAcb" target="_blank">Watch on YouTube</a>
         </div>
       </div>
-          <div class="content-card">
+      <div class="content-card">
         <div class="card-img-container">
           <img src="/tile-2.JPG" alt="Sahyadri Trek" loading="lazy">
         </div>
         <div class="card-content">
-          <h3>धुमाळवाडी धबधबा </h3>
+          <h3>धुमाळवाडी धबधबा</h3>
           <a href="https://maps.app.goo.gl/5fHqYVbNfMyvFfGy7" target="_blank">View on Google Map</a>
         </div>
       </div>
+      <!-- Add more vlog cards as needed; they will auto-wrap! -->
     </div>
   </section>
 
-  <!-- Travel Series Section -->
+  <!-- Travel Series -->
   <section>
-    <h2>🌄 30 Days 30 Monsson Spots Serise</h2>
+    <h2>🌄 30 Days 30 Monsoon Spots Series</h2>
     <div class="content-grid">
       <div class="content-card">
         <div class="card-img-container">
@@ -256,8 +265,8 @@
           <a href="https://maps.app.goo.gl/MaS98yMEJqywjrLu9" target="_blank">View on Map</a>
         </div>
       </div>
+      <!-- Add more series cards as desired -->
     </div>
   </section>
-
 </body>
 </html>
