@@ -33,11 +33,11 @@
     .profile-section {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
       padding: 20px;
       background-color: #fff;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       position: relative;
+      flex-wrap: wrap;
     }
 
     .profile-pic {
@@ -46,13 +46,13 @@
       background: url('/profile.jpg') center center/cover;
       border-radius: 50%;
       border: 5px solid #fff;
-      margin-top: -70px;
+      position: absolute;
+      top: -70px;
+      left: 20px;
     }
 
     .profile-info {
-      flex: 1;
-      margin-left: 20px;
-      min-width: 200px;
+      margin-left: 180px;
     }
 
     .profile-info h1 {
@@ -66,9 +66,9 @@
     }
 
     .social-buttons {
+      margin-left: auto;
       display: flex;
       gap: 10px;
-      margin-top: 10px;
     }
 
     .social-buttons a {
@@ -171,36 +171,53 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 768px) {
-      .cover { height: 200px; }
+    @media (max-width: 600px) {
+      .cover { display: none; }
+
       .profile-section {
         flex-direction: column;
-        align-items: center;
         text-align: center;
+        align-items: center;
       }
+
+      .profile-pic {
+        position: static;
+        width: 154px;
+        height: 154px;
+        margin-bottom: 10px;
+      }
+
       .profile-info {
         margin-left: 0;
+      }
+
+      .social-buttons {
+        margin: 10px 0 0;
+        justify-content: center;
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Cover / Profile -->
   <div class="cover"></div>
   <div class="profile-section">
     <div class="profile-pic"></div>
     <div class="profile-info">
       <h1>On Road Couple</h1>
       <p>Harshada & Sujeet — Travel | Trek | Ride</p>
-      <div class="social-buttons">
-        <a href="mailto:brand.onroadcouple@gmail.com" class="email" title="Email"><i class="bi bi-envelope-fill"></i></a>
-        <a href="https://youtube.com/@onroadcouple" class="youtube" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
-        <a href="https://instagram.com/onroadcouple" class="instagram" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
-        <a href="https://facebook.com/onroadcouple" class="facebook" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
-      </div>
+    </div>
+    <div class="social-buttons">
+      <a href="mailto:brand.onroadcouple@gmail.com" class="email" title="Email"><i class="bi bi-envelope-fill"></i></a>
+      <a href="https://youtube.com/@onroadcouple" class="youtube" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
+      <a href="https://instagram.com/onroadcouple" class="instagram" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://facebook.com/onroadcouple" class="facebook" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
     </div>
   </div>
 
+  <!-- Latest Vlogs Section -->
   <section>
     <h2>🎥 Latest Vlogs</h2>
     <div class="content-grid">
@@ -218,7 +235,7 @@
           <img src="/OnRoadCoupleThumb.png" alt="Sahyadri Trek" loading="lazy">
         </div>
         <div class="card-content">
-          <h3>Get to know faces behind the <a href="https://www.youtube.com/@OnRoadCouple">@OnRoadCouple</a></h3>
+          <h3>Get to know faces behind the ‪<a href="https://www.youtube.com/@OnRoadCouple">@OnRoadCouple</a>‬</h3>
           <a href="https://youtu.be/z5xlfU0N0Io?si=r35GpGSR5uzHJAcb" target="_blank">Watch on YouTube</a>
         </div>
       </div>
@@ -234,8 +251,9 @@
     </div>
   </section>
 
+  <!-- Travel Series Section -->
   <section>
-    <h2>🌄 30 Days 30 Monsoon Spots Series</h2>
+    <h2>🌄 30 Days 30 Monsson Spots Serise</h2>
     <div class="content-grid">
       <div class="content-card">
         <div class="card-img-container">
