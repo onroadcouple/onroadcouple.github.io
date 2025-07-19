@@ -4,24 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>On Road Couple</title>
-  <meta name="description" content="On Road Couple - Travel, Ride, Trek Adventures by Sujeet and Harshada. Watch our vlogs, explore map pins and enjoy travel photography.">
-  <meta name="keywords" content="OnRoadCouple, travel vlog, bikers, treks, India, YouTubers, Sujeet, Harshada">
+  <meta name="description" content="On Road Couple - Follow Harshada & Sujeet on their adventures across India. Bike rides, treks, and inspiring travel series.">
   <meta name="author" content="On Road Couple">
-  <meta property="og:title" content="On Road Couple - Travel | Trek | Ride">
-  <meta property="og:description" content="Follow Sujeet & Harshada on travel, trekking, riding and camping experiences across India.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200">
-  <meta name="twitter:card" content="summary_large_image">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
     }
 
     body {
       background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
     }
 
     .cover {
@@ -33,37 +30,35 @@
     .profile-section {
       display: flex;
       align-items: center;
-      gap: 20px;
+      background: #fff;
       padding: 20px;
-      background: white;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       position: relative;
     }
 
     .profile-pic {
-      width: 160px;
-      height: 160px;
-      border: 6px solid white;
+      width: 140px;
+      height: 140px;
+      background: url('https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=300') center center/cover;
       border-radius: 50%;
-      background: url('https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=400') center center/cover no-repeat;
+      border: 5px solid #fff;
       position: absolute;
-      top: -80px;
+      top: -70px;
       left: 20px;
     }
 
     .profile-info {
-      margin-left: 190px;
+      margin-left: 180px;
     }
 
     .profile-info h1 {
       font-size: 26px;
-      font-weight: 600;
-      margin-bottom: 5px;
+      font-weight: bold;
     }
 
     .profile-info p {
       font-size: 14px;
-      color: #777;
+      color: #555;
     }
 
     .social-buttons {
@@ -73,132 +68,194 @@
     }
 
     .social-buttons a {
-      padding: 10px;
-      border-radius: 50%;
       text-decoration: none;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
       color: white;
+      background: #333;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
     }
 
-    .social-buttons a.email    { background-color: #6c757d; }
-    .social-buttons a.youtube  { background-color: #FF0000; }
-    .social-buttons a.instagram{ background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
-    .social-buttons a.facebook { background-color: #1877f2; }
+    .youtube { background: #FF0000; }
+    .instagram { background: #E1306C; }
+    .facebook { background: #1877f2; }
+    .email { background: #333; }
 
-    .gallery {
-      padding: 20px;
+    section {
+      padding: 40px 20px;
+      background: white;
+      margin-bottom: 20px;
+    }
+
+    section h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+    }
+
+    .vlog-grid, .series-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
 
-    .gallery a img {
-      width: 100%;
-      height: 200px;
+    .vlog-card, .series-card {
+      background: #fafafa;
       border-radius: 10px;
-      object-fit: cover;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
 
-    .gallery a img:hover {
-      transform: scale(1.03);
+    .vlog-card:hover, .series-card:hover {
+      transform: scale(1.02);
+    }
+
+    .vlog-card img, .series-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 10px 15px;
+    }
+
+    .card-content h3 {
+      font-size: 16px;
+      margin: 10px 0 5px;
+    }
+
+    .card-content a {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: 14px;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .card-content a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
-      .cover {
-        display: none;
-      }
       .profile-section {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
+
       .profile-pic {
         position: static;
         margin-bottom: 10px;
       }
+
       .profile-info {
-        margin: 0;
-      }
-      .social-buttons {
         margin-left: 0;
+      }
+
+      .social-buttons {
+        margin-top: 10px;
         justify-content: center;
-        flex-wrap: wrap;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Cover/Header -->
   <div class="cover"></div>
+
+  <!-- Profile Section -->
   <div class="profile-section">
     <div class="profile-pic"></div>
     <div class="profile-info">
       <h1>On Road Couple</h1>
-      <p>Harshada & Sujeet - Travel | Trek | Ride</p>
+      <p>Harshada & Sujeet — Traveling | Trekking | Riding All Over India</p>
     </div>
     <div class="social-buttons">
       <a href="mailto:brand.onroadcouple@gmail.com" class="email" title="Email"><i class="bi bi-envelope-fill"></i></a>
-      <a href="https://youtube.com/@onroadcouple" target="_blank" class="youtube" title="YouTube"><i class="bi bi-youtube"></i></a>
-      <a href="https://instagram.com/onroadcouple" target="_blank" class="instagram" title="Instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://facebook.com/onroadcouple" target="_blank" class="facebook" title="Facebook"><i class="bi bi-facebook"></i></a>
+      <a href="https://youtube.com/@onroadcouple" class="youtube" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
+      <a href="https://instagram.com/onroadcouple" class="instagram" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://facebook.com/onroadcouple" class="facebook" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
     </div>
   </div>
 
-  <div class="gallery">
-    <!-- DO NOT REMOVE - Your important 2 original tiles first -->
-    <a href="https://youtu.be/IQze6y2uXfo?si=Kdo9h2ap14CB1PVG" target="_blank" title="Adventure Ride Vlog">
-      <img src="/tile-1.JPG" alt="Adventure Ride - YouTube Video" loading="lazy">
-    </a>
-    <a href="https://maps.app.goo.gl/5fHqYVbNfMyvFfGy7" target="_blank" title="Trek Vlog Location">
-      <img src="/tile-2.JPG" alt="Trekking Mountain View - Google Maps" loading="lazy">
-    </a>
+  <!-- Section: Latest Vlogs -->
+  <section>
+    <h2>🎥 Latest Vlogs</h2>
+    <div class="vlog-grid">
+      <!-- Vlog 1 -->
+      <div class="vlog-card">
+        <img src="/tile-1.JPG" alt="Adventure Ride Thumbnail">
+        <div class="card-content">
+          <h3>Adventure Ride to the Mountains</h3>
+          <a href="https://youtu.be/IQze6y2uXfo?si=Kdo9h2ap14CB1PVG" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
 
-    <!-- Extra: 5 lines (6 tiles per line = 30 open source image tiles; update href if needed) -->
-    <!-- Line 1 -->
-    <a href="https://maps.app.goo.gl/1Aexample1" target="_blank"><img src="https://images.unsplash.com/photo-1465101178521-c1a106c1acc4?w=600" alt="Mountain Sunrise Trek" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/1Aexample2" target="_blank"><img src="https://images.pexels.com/photos/340835/pexels-photo-340835.jpeg?w=600" alt="Viewpoint Forest Trail" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/1Aexample3" target="_blank"><img src="https://cdn.pixabay.com/photo/2016/01/19/17/44/campfire-1149621_1280.jpg" alt="Campfire with Friends" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/1Aexample4" target="_blank"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600" alt="Desert Road Adventure" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/1Aexample5" target="_blank"><img src="https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg?w=600" alt="Biking in Countryside" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/1Aexample6" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/01/20/00/30/adventure-1993646_1280.jpg" alt="Bonfire under Stars" loading="lazy"></a>
+      <!-- More Vlogs -->
+      <div class="vlog-card">
+        <img src="https://images.unsplash.com/photo-1593719341613-ac3de43cf1b4?w=600" alt="Ride to Beach">
+        <div class="card-content">
+          <h3>Ride to Coastal Roads</h3>
+          <a href="https://youtu.be/dummyvlog1" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
 
-    <!-- Line 2 -->
-    <a href="https://maps.app.goo.gl/2Bexample1" target="_blank"><img src="https://images.unsplash.com/photo-1519112232436-c9937e54c1a0?w=600" alt="Forest Mist Ride" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/2Bexample2" target="_blank"><img src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?w=600" alt="Mountain Lake Reflection" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/2Bexample3" target="_blank"><img src="https://cdn.pixabay.com/photo/2016/11/21/16/09/forest-1846877_1280.jpg" alt="Sunlight Through Trees" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/2Bexample4" target="_blank"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600" alt="Long Road to Mountains" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/2Bexample5" target="_blank"><img src="https://images.pexels.com/photos/210243/pexels-photo-210243.jpeg?w=600" alt="Tent Camping in Forest" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/2Bexample6" target="_blank"><img src="https://cdn.pixabay.com/photo/2015/07/09/17/48/sunset-838393_1280.jpg" alt="Sunset on Ridge" loading="lazy"></a>
+      <div class="vlog-card">
+        <img src="https://images.unsplash.com/photo-1532641145762-f4d5f7470f82?w=600" alt="Rain Ride">
+        <div class="card-content">
+          <h3>Rainy Monsoon Motorcycle Vlog</h3>
+          <a href="https://youtu.be/dummyvlog2" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Line 3 -->
-    <a href="https://maps.app.goo.gl/3Cexample1" target="_blank"><img src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?w=600" alt="Fort on Hilltop" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/3Cexample2" target="_blank"><img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?w=600" alt="Open Meadow Ride" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/3Cexample3" target="_blank"><img src="https://cdn.pixabay.com/photo/2016/03/09/09/17/camp-1245789_1280.jpg" alt="Lake Shore Camping" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/3Cexample4" target="_blank"><img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=600" alt="Climbing Rocky Trail" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/3Cexample5" target="_blank"><img src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?w=600" alt="Biking near Seaside" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/3Cexample6" target="_blank"><img src="https://cdn.pixabay.com/photo/2018/09/18/17/41/forest-3688936_1280.jpg" alt="Green Forest Hike" loading="lazy"></a>
+  <!-- Section: Travel Series -->
+  <section>
+    <h2>🌄 Travel Series</h2>
+    <div class="series-grid">
+      <!-- Original Series Tile -->
+      <div class="series-card">
+        <img src="/tile-2.JPG" alt="Trek Series Image">
+        <div class="card-content">
+          <h3>Sahyadri Trek Series</h3>
+          <a href="https://maps.app.goo.gl/5fHqYVbNfMyvFfGy7" target="_blank">View on Map</a>
+        </div>
+      </div>
 
-    <!-- Line 4 -->
-    <a href="https://maps.app.goo.gl/4Dexample1" target="_blank"><img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=600" alt="Summit Selfie" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/4Dexample2" target="_blank"><img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?w=600" alt="Sunrise Camping" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/4Dexample3" target="_blank"><img src="https://cdn.pixabay.com/photo/2016/11/18/19/37/adventure-1836074_1280.jpg" alt="Hidden Jungle Track" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/4Dexample4" target="_blank"><img src="https://images.unsplash.com/photo-1444065381814-865dc9da92c0?w=600" alt="Peak in the Clouds" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/4Dexample5" target="_blank"><img src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?w=600" alt="Twilight Lake View" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/4Dexample6" target="_blank"><img src="https://cdn.pixabay.com/photo/2016/01/19/17/44/campfire-1149621_1280.jpg" alt="Night Fire Adventure" loading="lazy"></a>
+      <!-- More Series -->
+      <div class="series-card">
+        <img src="https://images.unsplash.com/photo-1516569422863-60e89bbfa6b8?w=600" alt="Camping in Lonavala">
+        <div class="card-content">
+          <h3>Camping in Lonavala Valleys</h3>
+          <a href="https://maps.app.goo.gl/fakecamp1" target="_blank">View on Map</a>
+        </div>
+      </div>
 
-    <!-- Line 5 -->
-    <a href="https://maps.app.goo.gl/5Eexample1" target="_blank"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600" alt="Morning at the Lake" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/5Eexample2" target="_blank"><img src="https://images.pexels.com/photos/340835/pexels-photo-340835.jpeg?w=600" alt="Winding Trail Adventure" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/5Eexample3" target="_blank"><img src="https://cdn.pixabay.com/photo/2015/09/18/18/07/africa-942364_1280.jpg" alt="Wild Green Trail" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/5Eexample4" target="_blank"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600" alt="Remote Desert Trek" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/5Eexample5" target="_blank"><img src="https://images.pexels.com/photos/210243/pexels-photo-210243.jpeg?w=600" alt="Tent Stay by Woods" loading="lazy"></a>
-    <a href="https://maps.app.goo.gl/5Eexample6" target="_blank"><img src="https://cdn.pixabay.com/photo/2015/07/09/17/48/sunset-838393_1280.jpg" alt="Golden Hour Camp" loading="lazy"></a>
-  </div>
+      <div class="series-card">
+        <img src="https://images.unsplash.com/photo-1587502537745-2874c1e2c2c8?w=600" alt="Western Ghats Biking">
+        <div class="card-content">
+          <h3>Ride Through The Western Ghats</h3>
+          <a href="https://maps.app.goo.gl/fakeghats1" target="_blank">View on Map</a>
+        </div>
+      </div>
+
+      <div class="series-card">
+        <img src="https://cdn.pixabay.com/photo/2016/03/09/09/17/camp-1245789_1280.jpg" alt="Forest Camp">
+        <div class="card-content">
+          <h3>Camping & Off-Grid Forest Trails</h3>
+          <a href="https://maps.app.goo.gl/fakeforest1" target="_blank">View on Map</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>
