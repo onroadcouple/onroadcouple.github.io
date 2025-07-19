@@ -81,8 +81,9 @@
       align-items: center;
       border-radius: 50%;
       font-size: 19px;
-      /* Default fallback color */
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
       background: #333;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
     }
     .social-buttons a.youtube {
       background-color: #FF0000;
@@ -96,13 +97,17 @@
     .social-buttons a.email {
       background-color: #6c757d;
     }
+    .social-buttons a:hover {
+      transform: translateY(-4px) scale(1.13);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      filter: brightness(1.12);
+    }
 
     section {
       padding: 40px 20px;
       background: white;
       margin-bottom: 20px;
     }
-
     section h2 {
       margin-bottom: 20px;
       font-size: 24px;
@@ -110,19 +115,13 @@
       padding-bottom: 5px;
     }
 
-    .vlog-grid {
+    /* Consistent card layouts for both vlogs & travel series */
+    .content-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
-    @media (max-width: 900px) {
-      .vlog-grid { grid-template-columns: repeat(2, 1fr);}
-    }
-    @media (max-width: 600px) {
-      .vlog-grid { grid-template-columns: 1fr;}
-    }
-
-    .vlog-card, .series-card {
+    .content-card {
       background: #fafafa;
       border-radius: 10px;
       overflow: hidden;
@@ -131,70 +130,63 @@
       display: flex;
       flex-direction: column;
     }
-
-    .vlog-card:hover, .series-card:hover {
+    .content-card:hover {
       transform: scale(1.025);
+      box-shadow: 0 8px 26px rgba(0,0,0,0.11);
     }
-
-    .vlog-card img, .series-card img {
+    .content-card img {
       width: 100%;
-      height: 180px;
+      height: 220px;
       object-fit: cover;
       background: #ccc;
+      display: block;
+      border-bottom: 1px solid #eee;
     }
-
     .card-content {
-      padding: 10px 15px;
+      padding: 13px 18px 14px;
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-
     .card-content h3 {
-      font-size: 16px;
-      margin: 10px 0 5px 0;
+      font-size: 17px;
+      margin: 8px 0 4px 0;
       font-weight: 600;
+      color: #222;
+      letter-spacing: .01em;
     }
-
     .card-content a {
       display: inline-block;
       margin-top: 5px;
       font-size: 14px;
       color: #0066cc;
       text-decoration: none;
+      font-weight: 500;
     }
-
     .card-content a:hover {
       text-decoration: underline;
+      color: #005099;
     }
-
-    .series-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+    @media (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
-
     @media (max-width: 600px) {
+      .cover { display: none; }
       .profile-section {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
-
       .profile-pic {
         position: static;
         margin-bottom: 10px;
       }
-
-      .profile-info {
-        margin-left: 0;
-      }
-
-      .social-buttons {
-        margin-top: 10px;
-        justify-content: center;
-      }
+      .profile-info { margin-left: 0; }
+      .social-buttons { margin-top: 10px; justify-content: center; }
+      .content-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -218,32 +210,32 @@
     </div>
   </div>
 
-  <!-- Section: Latest Vlogs -->
+  <!-- Latest Vlogs -->
   <section>
     <h2>🎥 Latest Vlogs</h2>
-    <div class="vlog-grid">
-      <div class="vlog-card">
+    <div class="content-grid">
+      <div class="content-card">
         <img src="/tile-1.JPG" alt="Adventure Ride Thumbnail">
         <div class="card-content">
           <h3>Adventure Ride to the Mountains</h3>
           <a href="https://youtu.be/IQze6y2uXfo?si=Kdo9h2ap14CB1PVG" target="_blank">Watch on YouTube</a>
         </div>
       </div>
-      <div class="vlog-card">
+      <div class="content-card">
         <img src="https://images.unsplash.com/photo-1593719341613-ac3de43cf1b4?w=600" alt="Ride to Beach">
         <div class="card-content">
           <h3>Ride to Coastal Roads</h3>
           <a href="https://youtu.be/dummyvlog1" target="_blank">Watch on YouTube</a>
         </div>
       </div>
-      <div class="vlog-card">
+      <div class="content-card">
         <img src="https://images.unsplash.com/photo-1532641145762-f4d5f7470f82?w=600" alt="Rain Ride">
         <div class="card-content">
           <h3>Rainy Monsoon Motorcycle Vlog</h3>
           <a href="https://youtu.be/dummyvlog2" target="_blank">Watch on YouTube</a>
         </div>
       </div>
-      <div class="vlog-card">
+      <div class="content-card">
         <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600" alt="Misty Road Ride">
         <div class="card-content">
           <h3>Misty Morning Road Trip</h3>
@@ -253,81 +245,81 @@
     </div>
   </section>
 
-  <!-- Section: Travel Series -->
+  <!-- Travel Series -->
   <section>
     <h2>🌄 Travel Series</h2>
-    <div class="series-grid">
-      <div class="series-card">
+    <div class="content-grid">
+      <div class="content-card">
         <img src="/tile-2.JPG" alt="Trek Series Image">
         <div class="card-content">
           <h3>Sahyadri Trek Series</h3>
           <a href="https://maps.app.goo.gl/5fHqYVbNfMyvFfGy7" target="_blank">View on Map</a>
         </div>
       </div>
-      <div class="series-card">
+      <div class="content-card">
         <img src="https://images.unsplash.com/photo-1516569422863-60e89bbfa6b8?w=600" alt="Camping in Lonavala">
         <div class="card-content">
           <h3>Camping in Lonavala Valleys</h3>
           <a href="https://maps.app.goo.gl/fakecamp1" target="_blank">View on Map</a>
         </div>
       </div>
-      <div class="series-card">
+      <div class="content-card">
         <img src="https://images.unsplash.com/photo-1587502537745-2874c1e2c2c8?w=600" alt="Western Ghats Biking">
         <div class="card-content">
           <h3>Ride Through The Western Ghats</h3>
           <a href="https://maps.app.goo.gl/fakeghats1" target="_blank">View on Map</a>
         </div>
       </div>
-      <div class="series-card">
+      <div class="content-card">
         <img src="https://cdn.pixabay.com/photo/2016/03/09/09/17/camp-1245789_1280.jpg" alt="Forest Camp">
         <div class="card-content">
           <h3>Camping & Off-Grid Forest Trails</h3>
           <a href="https://maps.app.goo.gl/fakeforest1" target="_blank">View on Map</a>
         </div>
       </div>
-      <div class="series-card">
+      <div class="content-card">
         <img src="https://images.unsplash.com/photo-1465101178521-c1a106c1acc4?w=600" alt="Mountain Sunrise Trek">
         <div class="card-content">
           <h3>Mountain Sunrise Trek</h3>
           <a href="https://maps.app.goo.gl/1Aexample1" target="_blank">View on Map</a>
         </div>
       </div>
-      <div class="series-card">
+      <div class="content-card">
         <img src="https://images.pexels.com/photos/340835/pexels-photo-340835.jpeg?w=600" alt="Viewpoint Forest Trail">
         <div class="card-content">
           <h3>Viewpoint Forest Trail</h3>
           <a href="https://maps.app.goo.gl/1Aexample2" target="_blank">View on Map</a>
         </div>
       </div>
-      <div class="series-card">
+      <div class="content-card">
         <img src="https://cdn.pixabay.com/photo/2016/01/19/17/44/campfire-1149621_1280.jpg" alt="Campfire with Friends">
         <div class="card-content">
           <h3>Campfire with Friends</h3>
           <a href="https://maps.app.goo.gl/1Aexample3" target="_blank">View on Map</a>
         </div>
       </div>
-      <div class="series-card">
+      <div class="content-card">
         <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600" alt="Desert Road Adventure">
         <div class="card-content">
           <h3>Desert Road Adventure</h3>
           <a href="https://maps.app.goo.gl/1Aexample4" target="_blank">View on Map</a>
         </div>
       </div>
-      <div class="series-card">
+      <div class="content-card">
         <img src="https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg?w=600" alt="Biking in Countryside">
         <div class="card-content">
           <h3>Biking in Countryside</h3>
           <a href="https://maps.app.goo.gl/1Aexample5" target="_blank">View on Map</a>
         </div>
       </div>
-      <div class="series-card">
+      <div class="content-card">
         <img src="https://cdn.pixabay.com/photo/2017/01/20/00/30/adventure-1993646_1280.jpg" alt="Bonfire under Stars">
         <div class="card-content">
           <h3>Bonfire under Stars</h3>
           <a href="https://maps.app.goo.gl/1Aexample6" target="_blank">View on Map</a>
         </div>
       </div>
-      <!-- Add more series cards/tiles as needed following this structure -->
+      <!-- Add more travel series cards as needed -->
     </div>
   </section>
 
