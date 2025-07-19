@@ -174,10 +174,10 @@
     <!-- Gallery Section -->
     <div class="gallery">
       <a href="https://youtu.be/IQze6y2uXfo?si=Kdo9h2ap14CB1PVG" target="_blank">
-        <img src="/tile-1.JPG" alt="Adventure Ride">
+        <img src="https://via.placeholder.com/400x250?text=Adventure+Ride" alt="Adventure Ride">
       </a>
       <a href="https://maps.app.goo.gl/5fHqYVbNfMyvFfGy7" target="_blank">
-        <img src="/tile-2.JPG" alt="Trek Vlog">
+        <img src="https://via.placeholder.com/400x250?text=Trek+Vlog" alt="Trek Vlog">
       </a>
     </div>
 
@@ -185,37 +185,13 @@
     <div class="gallery">
       <h2>30 Days 30 Monsoon Spots</h2>
 
-      <!-- Repeat below block with your real images and links -->
-      <a href="https://maps.app.goo.gl/example1" target="_blank"><img src="/tile-3.jpg" alt="Devkund Waterfall"></a>
-      <a href="https://maps.app.goo.gl/example2" target="_blank"><img src="/tile-4.jpg" alt="Andharban Forest"></a>
-      <a href="https://maps.app.goo.gl/example3" target="_blank"><img src="/tile-5.jpg" alt="Tamhini Ghat"></a>
-      <a href="https://maps.app.goo.gl/example4" target="_blank"><img src="/tile-6.jpg" alt="Kataldhar Waterfall"></a>
-      <a href="https://maps.app.goo.gl/example5" target="_blank"><img src="/tile-7.jpg" alt="Bhivpuri Waterfall"></a>
-      <a href="https://maps.app.goo.gl/example6" target="_blank"><img src="/tile-8.jpg" alt="Varandha Ghat"></a>
-      <a href="https://maps.app.goo.gl/example7" target="_blank"><img src="/tile-9.jpg" alt="Malshej Ghat"></a>
-      <a href="https://maps.app.goo.gl/example8" target="_blank"><img src="/tile-10.jpg" alt="Kune Falls Lonavala"></a>
-      <a href="https://maps.app.goo.gl/example9" target="_blank"><img src="/tile-11.jpg" alt="Thoseghar Waterfall"></a>
-      <a href="https://maps.app.goo.gl/example10" target="_blank"><img src="/tile-12.jpg" alt="Chinchoti Waterfall"></a>
-      <a href="https://maps.app.goo.gl/example11" target="_blank"><img src="/tile-13.jpg" alt="Pandavkada Falls"></a>
-      <a href="https://maps.app.goo.gl/example12" target="_blank"><img src="/tile-14.jpg" alt="Pateshwar"></a>
-      <a href="https://maps.app.goo.gl/example13" target="_blank"><img src="/tile-15.jpg" alt="Raigad Fort"></a>
-      <a href="https://maps.app.goo.gl/example14" target="_blank"><img src="/tile-16.jpg" alt="Visapur Trek"></a>
-      <a href="https://maps.app.goo.gl/example15" target="_blank"><img src="/tile-17.jpg" alt="Lohagad Fort"></a>
-      <a href="https://maps.app.goo.gl/example16" target="_blank"><img src="/tile-18.jpg" alt="Shivtharghal Caves"></a>
-      <a href="https://maps.app.goo.gl/example17" target="_blank"><img src="/tile-19.jpg" alt="Madhe Ghat"></a>
-      <a href="https://maps.app.goo.gl/example18" target="_blank"><img src="/tile-20.jpg" alt="Dudhsagar Falls (Karnataka Border)"></a>
-      <a href="https://maps.app.goo.gl/example19" target="_blank"><img src="/tile-21.jpg" alt="Kaas Plateau"></a>
-      <a href="https://maps.app.goo.gl/example20" target="_blank"><img src="/tile-22.jpg" alt="Chikhaldara"></a>
-      <a href="https://maps.app.goo.gl/example21" target="_blank"><img src="/tile-23.jpg" alt="Mulshi Dam"></a>
-      <a href="https://maps.app.goo.gl/example22" target="_blank"><img src="/tile-24.jpg" alt="Rajmachi Point"></a>
-      <a href="https://maps.app.goo.gl/example23" target="_blank"><img src="/tile-25.jpg" alt="Tapola Lake"></a>
-      <a href="https://maps.app.goo.gl/example24" target="_blank"><img src="/tile-26.jpg" alt="Kaas Pathar"></a>
-      <a href="https://maps.app.goo.gl/example25" target="_blank"><img src="/tile-27.jpg" alt="Bhandardara Lake"></a>
-      <a href="https://maps.app.goo.gl/example26" target="_blank"><img src="/tile-28.jpg" alt="Panhala Fort"></a>
-      <a href="https://maps.app.goo.gl/example27" target="_blank"><img src="/tile-29.jpg" alt="Kundalika Valley"></a>
-      <a href="https://maps.app.goo.gl/example28" target="_blank"><img src="/tile-30.jpg" alt="Ahupe Ghat"></a>
-      <a href="https://maps.app.goo.gl/example29" target="_blank"><img src="/tile-31.jpg" alt="Panchgani Table Land"></a>
-      <a href="https://maps.app.goo.gl/example30" target="_blank"><img src="/tile-32.jpg" alt="Harishchandragad Monsoon Trek"></a>
+      <!-- Loop for 30 dummy tiles -->
+      <!-- You can update the href and image text for real content -->
+      ${[...Array(30)].map((_, i) => `
+        <a href="https://maps.app.goo.gl/example${i+1}" target="_blank">
+          <img src="https://via.placeholder.com/400x250?text=Spot+${i+1}" alt="Monsoon Spot ${i+1}">
+        </a>
+      `).join('')}
     </div>
 
   </body>
