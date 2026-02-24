@@ -1,0 +1,14 @@
+{
+  "name": "onroadcouple-website",
+  "version": "1.0.0",
+  "description": "On Road Couple – Travel | Trek | Ride",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
+  }
+}

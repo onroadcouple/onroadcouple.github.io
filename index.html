@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <meta property="og:title" content="On Road Couple - Travel | Trek | Ride" />
     <meta
       property="og:description"
@@ -20,297 +21,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
     />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", sans-serif;
-      }
-
-      body {
-        background: #f0f2f5;
-        color: #333;
-        line-height: 1.6;
-      }
-
-      .cover {
-        height: 300px;
-        background: url("/cover.jpg") center center/cover no-repeat;
-      }
-
-      .profile-section {
-        display: flex;
-        align-items: center;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        position: relative;
-        flex-wrap: wrap;
-      }
-
-      .profile-pic {
-        width: 140px;
-        height: 140px;
-        background: url("/profile.jpg") center center/cover;
-        border-radius: 50%;
-        border: 5px solid #fff;
-        position: absolute;
-        top: -70px;
-        left: 20px;
-      }
-
-      .profile-info {
-        margin-left: 180px;
-      }
-
-      .profile-info h1 {
-        font-size: 26px;
-        font-weight: bold;
-      }
-
-      .profile-info p {
-        font-size: 14px;
-        color: #555;
-      }
-
-      .social-buttons {
-        margin-left: auto;
-        display: flex;
-        gap: 10px;
-      }
-
-      .social-buttons a {
-        width: 36px;
-        height: 36px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        border-radius: 50%;
-        font-size: 18px;
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-
-      .social-buttons a.youtube {
-        background-color: #ff0000;
-      }
-      .social-buttons a.facebook {
-        background-color: #1877f2;
-      }
-      .social-buttons a.instagram {
-        background: radial-gradient(
-          circle at 30% 107%,
-          #fdf497 0%,
-          #fd5949 45%,
-          #d6249f 60%,
-          #285aeb 90%
-        );
-      }
-      .social-buttons a.email {
-        background-color: #6c757d;
-      }
-
-      .social-buttons a:hover {
-        transform: scale(1.15);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-      }
-
-      section {
-        padding: 40px 20px;
-        background-color: #fff;
-        margin-bottom: 20px;
-      }
-
-      section h2 {
-        font-size: 22px;
-        border-bottom: 2px solid #eee;
-        padding-bottom: 6px;
-        margin-bottom: 20px;
-      }
-
-      .content-grid {
-        display: grid;
-        gap: 20px;
-        max-width: 1440px;
-        margin: 0 auto;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      }
-
-      .content-card {
-        background-color: #fafafa;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-        transition: transform 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 12px;
-      }
-
-      .content-card:hover {
-        transform: scale(1.03);
-      }
-
-      .card-img-container {
-        width: 100%;
-        aspect-ratio: 16/9;
-        background: #ccc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
-      }
-      .card-img-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .card-content {
-        width: 95%;
-        margin-top: 10px;
-        text-align: center;
-      }
-
-      .card-content h3 {
-        font-size: 15px;
-        margin: 0 0 8px;
-        font-weight: 600;
-      }
-
-      .card-content a {
-        font-size: 14px;
-        color: #007bff;
-        text-decoration: none;
-      }
-
-      .card-content a:hover {
-        text-decoration: underline;
-      }
-
-      @keyframes shimmer {
-        0% { background-position: -400px 0; }
-        100% { background-position: 400px 0; }
-      }
-      .skeleton-img {
-        background: linear-gradient(90deg, #e8e8e8 25%, #f5f5f5 50%, #e8e8e8 75%);
-        background-size: 800px 100%;
-        animation: shimmer 1.4s infinite;
-      }
-      .skeleton-line {
-        height: 12px;
-        border-radius: 6px;
-        margin: 8px auto 4px;
-        width: 80%;
-        background: linear-gradient(90deg, #e8e8e8 25%, #f5f5f5 50%, #e8e8e8 75%);
-        background-size: 800px 100%;
-        animation: shimmer 1.4s infinite;
-      }
-      .skeleton-line.short { width: 50%; }
-
-
-      /* ===== ITINERARIES SECTION ===== */
-      .itineraries-section {
-        padding: 24px 16px 28px;
-        background: #f2f2f7;
-      }
-
-      .itineraries-section h2 {
-        font-size: 13px;
-        font-weight: 600;
-        color: #888;
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
-        margin-bottom: 14px;
-        padding-left: 4px;
-      }
-
-      .itineraries-list {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .itinerary-row {
-        display: flex;
-        align-items: center;
-        background: #fff;
-        border-radius: 16px;
-        padding: 10px 16px 10px 10px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-        gap: 14px;
-        text-decoration: none;
-        color: inherit;
-        transition: background 0.15s, box-shadow 0.15s;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      .itinerary-row:active {
-        background: #f5f5f5;
-      }
-
-      .itinerary-thumb {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        object-fit: cover;
-        flex-shrink: 0;
-        background: #ddd;
-      }
-
-      .itinerary-title {
-        flex: 1;
-        font-size: 15px;
-        font-weight: 600;
-        color: #111;
-        line-height: 1.3;
-        text-align: center;
-      }
-
-      .itinerary-chevron {
-        font-size: 18px;
-        color: #c7c7cc;
-        flex-shrink: 0;
-        font-weight: 300;
-      }
-
-      @media (max-width: 600px) {
-        .cover {
-          display: none;
-        }
-
-        .profile-section {
-          flex-direction: column;
-          text-align: center;
-          align-items: center;
-        }
-
-        .profile-pic {
-          position: static;
-          width: 154px;
-          height: 154px;
-          margin-bottom: 10px;
-        }
-
-        .profile-info {
-          margin-left: 0;
-        }
-
-        .social-buttons {
-          margin: 10px 0 0;
-          justify-content: center;
-          width: 100%;
-        }
-      }
-    </style>
+    <script type="module" src="/src/main.ts"></script>
+  </head>
   <body>
     <!-- Cover / Profile -->
     <div class="cover"></div>
@@ -318,7 +30,7 @@
       <div class="profile-pic"></div>
       <div class="profile-info">
         <h1>On Road Couple</h1>
-        <p>Harshada & Sujeet — Travel | Trek | Ride</p>
+        <p>Harshada &amp; Sujeet — Travel | Trek | Ride</p>
       </div>
       <div class="social-buttons">
         <a
@@ -357,25 +69,25 @@
       <div class="itineraries-list">
 
         <a class="itinerary-row" href="itineraries/kashmir-itinerary.pdf" target="_blank">
-          <img class="itinerary-thumb" src="tile-1.JPG" alt="Kashmir">
+          <img class="itinerary-thumb" src="/tile-1.JPG" alt="Kashmir">
           <span class="itinerary-title">Kashmir Complete Itinerary</span>
           <span class="itinerary-chevron">›</span>
         </a>
 
         <a class="itinerary-row" href="itineraries/goa-itinerary.pdf" target="_blank">
-          <img class="itinerary-thumb" src="tile-2.JPG" alt="Goa">
+          <img class="itinerary-thumb" src="/tile-2.JPG" alt="Goa">
           <span class="itinerary-title">Goa Budget Itinerary</span>
           <span class="itinerary-chevron">›</span>
         </a>
 
         <a class="itinerary-row" href="itineraries/ladakh-itinerary.pdf" target="_blank">
-          <img class="itinerary-thumb" src="OnRoadCoupleThumb.png" alt="Ladakh">
+          <img class="itinerary-thumb" src="/OnRoadCoupleThumb.png" alt="Ladakh">
           <span class="itinerary-title">Ladakh Road Trip Itinerary</span>
           <span class="itinerary-chevron">›</span>
         </a>
 
         <a class="itinerary-row" href="itineraries/rajasthan-itinerary.pdf" target="_blank">
-          <img class="itinerary-thumb" src="tr-serise-1.JPG" alt="Rajasthan">
+          <img class="itinerary-thumb" src="/tr-serise-1.JPG" alt="Rajasthan">
           <span class="itinerary-title">Rajasthan Heritage Itinerary</span>
           <span class="itinerary-chevron">›</span>
         </a>
@@ -393,126 +105,5 @@
         <div class="content-card skeleton-card"><div class="card-img-container skeleton-img"></div><div class="card-content"><div class="skeleton-line"></div><div class="skeleton-line short"></div></div></div>
       </div>
     </section>
-
-    <script>
-      (function () {
-        var CHANNEL_ID = 'UC7tfwBouSjBIcFegohPa0tQ';
-        var grid = document.getElementById('vlogsGrid');
-
-        var INSTANCES = [
-          'https://inv.nadeko.net',
-          'https://invidious.privacyredirect.com',
-          'https://yewtu.be'
-        ];
-
-        // Checks if the youtube thumbnail is a real horizontal one (not a 120px Short placeholder)
-        function thumbOk(videoId) {
-          return new Promise(function (resolve) {
-            var img = new Image();
-            img.onload = function () { resolve(img.naturalWidth > 121); };
-            img.onerror = function () { resolve(false); };
-            img.src = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';
-          });
-        }
-
-        function renderVideos(videos) {
-          grid.innerHTML = videos.map(function (v) {
-            var link = 'https://www.youtube.com/watch?v=' + v.videoId;
-            var thumb = 'https://img.youtube.com/vi/' + v.videoId + '/hqdefault.jpg';
-            var title = (v.title || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            return '<div class="content-card">'
-              + '<div class="card-img-container"><a href="' + link + '" target="_blank">'
-              + '<img src="' + thumb + '" alt="' + title + '" loading="lazy">'
-              + '</a></div>'
-              + '<div class="card-content"><h3>' + title + '</h3>'
-              + '<a href="' + link + '" target="_blank">Watch on YouTube</a>'
-              + '</div></div>';
-          }).join('');
-        }
-
-        function filterAndRender(candidates) {
-          // Triple filter: valid ID + duration > 3min + thumbnail check
-          return Promise.all(
-            candidates
-              .filter(function (v) {
-                return v.videoId
-                  && v.type !== 'shortVideo'
-                  && v.type !== 'short'
-                  && (v.lengthSeconds || 0) > 180;
-              })
-              .map(function (v) {
-                return thumbOk(v.videoId).then(function (ok) {
-                  return ok ? v : null;
-                });
-              })
-          ).then(function (results) {
-            return results.filter(Boolean).slice(0, 3);
-          });
-        }
-
-        function tryInvidious(instanceIndex) {
-          if (instanceIndex >= INSTANCES.length) { tryRss(); return; }
-          var base = INSTANCES[instanceIndex];
-
-          // Paginate through all uploads until we have 3 horizontal videos
-          function fetchPage(page, found) {
-            var url = base + '/api/v1/channels/' + CHANNEL_ID + '/videos?sort_by=newest&page=' + page;
-            return fetch(url, { signal: AbortSignal.timeout(7000) })
-              .then(function (r) { return r.json(); })
-              .then(function (data) {
-                var items = Array.isArray(data) ? data : (data.videos || []);
-                if (!items.length) return found; // no more pages
-                return filterAndRender(items).then(function (batch) {
-                  var merged = found.concat(batch).slice(0, 3);
-                  if (merged.length >= 3 || page >= 10) return merged;
-                  return fetchPage(page + 1, merged); // fetch next page
-                });
-              });
-          }
-
-          fetchPage(1, [])
-            .then(function (videos) {
-              if (!videos.length) throw new Error('No valid videos');
-              renderVideos(videos);
-            })
-            .catch(function () { tryInvidious(instanceIndex + 1); });
-        }
-
-
-        function tryRss() {
-          var RSS_URL = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
-          var API = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(RSS_URL);
-          fetch(API)
-            .then(function (r) { return r.json(); })
-            .then(function (data) {
-              if (!data.items || !data.items.length) throw new Error('No items');
-              var candidates = data.items
-                .filter(function (v) {
-                  return ((v.title || '') + ' ' + (v.description || '')).toLowerCase().indexOf('#short') === -1;
-                })
-                .map(function (v) {
-                  var id = (v.link || '').split('v=')[1];
-                  return id ? { videoId: id, title: v.title, type: 'video', lengthSeconds: 999 } : null;
-                })
-                .filter(Boolean);
-              return filterAndRender(candidates);
-            })
-            .then(function (videos) {
-              if (!videos.length) throw new Error('empty');
-              renderVideos(videos);
-            })
-            .catch(function () {
-              grid.innerHTML = '<p style="color:#888;padding:10px">Could not load videos. '
-                + '<a href="https://youtube.com/@onroadcouple" target="_blank">Visit our YouTube channel →</a></p>';
-            });
-        }
-
-        tryInvidious(0);
-      })();
-    </script>
-
-
-
-
   </body>
 </html>
