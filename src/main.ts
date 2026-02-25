@@ -167,18 +167,16 @@ async function tryRssFallback(): Promise<Video[]> {
   const data = (await fetch(API).then((r) => r.json())) as { items?: RssItem[] };
   if (!data.items?.length) return [];
 
-  const candidates: InvidiousItem[] = data.items
-    .filter(
-      (v) =>
-        // Shorts appear with a /shorts/ link in the RSS feed — skip them
-        !(v.link ?? '').includes('/shorts/') &&
-        !(`${v.title ?? ''} ${v.description ?? ''}`).toLowerCase().includes('#short'),
-    )
-    .map((v) => {
+  const candidates: InvidiousItem[] = [];
+  for (const v of data.items) {
+    if (
+      !(v.link ?? '').includes('/shorts/') &&
+      !(`${v.title ?? ''} ${v.description ?? ''}`).toLowerCase().includes('#short')
+    ) {
       const id = (v.link ?? '').split('v=')[1];
-      return id ? { videoId: id, title: v.title, type: 'video', lengthSeconds: 999 } : null;
-    })
-    .filter((v): v is InvidiousItem => v !== null);
+      if (id) candidates.push({ videoId: id, title: v.title, type: 'video', lengthSeconds: 999 });
+    }
+  }
 
   return filterHorizontal(candidates);
 }
