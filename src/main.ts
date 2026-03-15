@@ -5,8 +5,6 @@ import './style.css';
 interface Video {
   videoId: string;
   title: string;
-  type: string;
-  lengthSeconds: number;
 }
 
 interface InvidiousItem {
@@ -32,9 +30,9 @@ const CHANNEL_ID = 'UC7tfwBouSjBIcFegohPa0tQ';
  * Update this list whenever a new long-form vlog is published.
  */
 const STATIC_FALLBACK: Video[] = [
-  { videoId: 'pgwE8r7Pp_w', title: 'Singapore Tour Itinerary: Trip Planning, Best Locations & Full Budget', type: 'video', lengthSeconds: 1394 },
-  { videoId: 'TVWzz1GAGBs', title: 'DJI Mini 5 Pro: Full Review in Marathi | Best Drone 2025 India', type: 'video', lengthSeconds: 607 },
-  { videoId: 'IQze6y2uXfo', title: 'Best Monsoon Spots near Pune | Hidden Waterfall', type: 'video', lengthSeconds: 617 },
+  { videoId: 'pgwE8r7Pp_w', title: 'Singapore Tour Itinerary: Trip Planning, Best Locations & Full Budget' },
+  { videoId: 'TVWzz1GAGBs', title: 'DJI Mini 5 Pro: Full Review in Marathi | Best Drone 2025 India' },
+  { videoId: 'IQze6y2uXfo', title: 'Best Monsoon Spots near Pune | Hidden Waterfall' },
 ];
 
 /**
@@ -117,7 +115,7 @@ async function filterHorizontal(candidates: InvidiousItem[]): Promise<Video[]> {
     eligible.map(async (v) => {
       const ok = await thumbOk(v.videoId!);
       return ok
-        ? ({ videoId: v.videoId!, title: v.title ?? '', type: v.type ?? 'video', lengthSeconds: v.lengthSeconds ?? 0 } as Video)
+        ? ({ videoId: v.videoId!, title: v.title ?? '' } as Video)
         : null;
     }),
   );

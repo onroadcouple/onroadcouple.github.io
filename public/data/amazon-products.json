@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "title": "DJI Osmo Action 5 Pro Adventure Combo",
+      "category": "Camera Gear",
+      "affiliateLink": "https://amzn.to/3N7URHX",
+      "description": "",
+      "id": 5,
+      "image": "/images/products/product_1773599063232.jpg"
+    },
+    {
+      "title": "Local Save Test Product",
+      "category": "test",
+      "affiliateLink": "https://www.amazon.in/dp/B07ZB3D9QT?tag=onroadcouple-21",
+      "description": "",
+      "id": 4,
+      "image": "/images/products/product_1773598992187.jpg"
+    },
+    {
+      "title": "Local Save Test Product",
+      "category": "Travel Gear",
+      "affiliateLink": "https://www.amazon.in/dp/B07ZB3D9QT",
+      "description": "",
+      "id": 3,
+      "image": "/images/products/product_1773598739690.jpg"
+    },
+    {
+      "title": "Local Save Test Product",
+      "category": "Travel Gear",
+      "affiliateLink": "https://www.amazon.in/dp/B07ZB3D9QT",
+      "description": "",
+      "id": 2,
+      "image": "/images/products/product_1773598689835.jpg"
+    },
+    {
+      "id": 1,
+      "title": "Wildcraft Unisex Trailblazer 45L Travel Backpack",
+      "price": "₹2,499",
+      "rating": 4.5,
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80",
+      "description": "Durable 45L backpack with rain cover, ideal for motorcycle trips and multi-day trekking adventures.",
+      "category": "Travel Gear",
+      "affiliateLink": "https://www.amazon.in/dp/B07ZB3D9QT?tag=onroadcouple-21"
+    }
+  ]
+}

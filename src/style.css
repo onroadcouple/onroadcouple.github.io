@@ -294,3 +294,77 @@ section h2 {
     width: 100%;
   }
 }
+
+/* ===== AMAZON STORE CTA BUTTON ===== */
+
+.amazon-store-cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+  padding: 0 4px;
+}
+
+.amazon-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #FF9900 0%, #FF6B35 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 50px;
+  letter-spacing: .2px;
+  box-shadow: 0 4px 18px rgba(255, 153, 0, .45);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  position: relative;
+  overflow: hidden;
+  max-width: 420px;
+  text-align: center;
+}
+
+.amazon-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.amazon-cta-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 28px rgba(255, 153, 0, .55);
+  background: linear-gradient(135deg, #FFAA1A 0%, #FF7E4A 100%);
+}
+
+.amazon-cta-btn:active {
+  transform: translateY(-1px) scale(1.00);
+}
+
+.amazon-cta-btn__icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.amazon-cta-btn__arrow {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform .25s ease;
+}
+
+.amazon-cta-btn:hover .amazon-cta-btn__arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 600px) {
+  .amazon-cta-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    padding: 13px 20px;
+  }
+}
+
