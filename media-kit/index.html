@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On Road Couple - Media Kit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs" type="module"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0f0f13;
+      --bg-secondary: #1a1a24;
+      --bg-toolbar: rgba(18, 18, 28, 0.92);
+      --accent: #f59e0b;
+      --accent-hover: #fbbf24;
+      --text-primary: #f1f1f4;
+      --text-secondary: #8b8b9e;
+      --border: rgba(255,255,255,0.06);
+      --shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    /* ─── Toolbar ──────────────────────────────────── */
+    .toolbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      background: var(--bg-toolbar);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .toolbar-logo {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.3px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toolbar-logo:hover { color: var(--accent-hover); }
+
+    .toolbar-divider {
+      width: 1px;
+      height: 22px;
+      background: var(--border);
+    }
+
+    .toolbar-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .toolbar-center {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ─── Buttons ──────────────────────────────────── */
+    .tb-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 16px;
+    }
+    .tb-btn:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-1px);
+    }
+    .tb-btn:active { transform: scale(0.95); }
+
+
+
+    .page-info {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+      min-width: 70px;
+      text-align: center;
+      user-select: none;
+    }
+
+    .zoom-info {
+      font-size: 12px;
+      color: var(--text-secondary);
+      min-width: 44px;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* ─── PDF Viewer Container ─────────────────────── */
+    .viewer-container {
+      position: fixed;
+      top: 56px;
+      left: 0; right: 0; bottom: 0;
+      overflow: auto;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(245,158,11,0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(139,92,246,0.03) 0%, transparent 50%),
+        var(--bg-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 0;
+      gap: 16px;
+    }
+
+    .page-wrapper {
+      position: relative;
+      box-shadow: var(--shadow);
+      border-radius: 4px;
+      max-width: 100%;
+      flex-shrink: 0;
+    }
+
+    .page-canvas {
+      display: block;
+      border-radius: 4px;
+    }
+
+    .annotation-layer {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+
+    .annotation-layer a {
+      position: absolute;
+      pointer-events: all;
+      cursor: pointer;
+    }
+    .annotation-layer a:hover {
+      opacity: 1;
+    }
+
+    /* ─── Loading ──────────────────────────────────── */
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      z-index: 200;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .loading-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .spinner {
+      width: 44px;
+      height: 44px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* ─── Error ────────────────────────────────────── */
+    .error-state {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      height: 100%;
+      text-align: center;
+      padding: 40px;
+    }
+    .error-state.visible { display: flex; }
+    .error-icon { font-size: 48px; }
+    .error-title { font-size: 18px; font-weight: 600; }
+    .error-desc { font-size: 14px; color: var(--text-secondary); max-width: 400px; line-height: 1.6; }
+    .error-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .error-link:hover { background: var(--accent-hover); }
+
+    /* ─── Responsive ───────────────────────────────── */
+    @media (max-width: 640px) {
+      .toolbar-title, .toolbar-divider { display: none; }
+      .toolbar-center { position: static; transform: none; }
+
+      .zoom-info { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="loading-text">Loading Media Kit…</div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <a href="/" class="toolbar-logo">On Road Couple</a>
+      <div class="toolbar-divider"></div>
+      <span class="toolbar-title">Media Kit</span>
+    </div>
+
+    <div class="toolbar-center">
+      <button class="tb-btn" id="prevPage" title="Previous page">‹</button>
+      <span class="page-info" id="pageInfo">— / —</span>
+      <button class="tb-btn" id="nextPage" title="Next page">›</button>
+    </div>
+
+    <div class="toolbar-right">
+      <button class="tb-btn" id="zoomOut" title="Zoom out">−</button>
+      <span class="zoom-info" id="zoomInfo">100%</span>
+      <button class="tb-btn" id="zoomIn" title="Zoom in">+</button>
+
+    </div>
+  </div>
+
+  <!-- PDF Pages Container -->
+  <div class="viewer-container" id="viewerContainer">
+    <div class="error-state" id="errorState">
+      <div class="error-icon">📄</div>
+      <div class="error-title">Could not load the Media Kit</div>
+      <div class="error-desc">Something went wrong while loading the PDF. You can download it directly instead.</div>
+      <a class="error-link" href="/">← Back to Home</a>
+    </div>
+  </div>
+
+  <script type="module">
+    const PDF_URL = '/media-kit.pdf';
+
+    // PDF.js setup
+    const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs');
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs';
+
+    // State
+    let pdfDoc = null;
+    let currentPage = 1;
+    let totalPages = 0;
+    let currentScale = 1.0;
+    const SCALE_STEP = 0.25;
+    const MIN_SCALE = 0.5;
+    const MAX_SCALE = 4;
+
+    // DOM
+    const viewer = document.getElementById('viewerContainer');
+    const pageInfoEl = document.getElementById('pageInfo');
+    const zoomInfoEl = document.getElementById('zoomInfo');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const errorState = document.getElementById('errorState');
+
+    // Render all pages
+    async function renderAllPages() {
+      // Remove existing page wrappers
+      viewer.querySelectorAll('.page-wrapper').forEach(w => w.remove());
+
+      // Use devicePixelRatio for crisp rendering on Retina/HiDPI displays
+      const dpr = window.devicePixelRatio || 1;
+
+      for (let num = 1; num <= totalPages; num++) {
+        const page = await pdfDoc.getPage(num);
+        const viewport = page.getViewport({ scale: currentScale });
+
+        // Create a higher-resolution viewport for the actual canvas pixels
+        const hiResViewport = page.getViewport({ scale: currentScale * dpr });
+
+        // Page wrapper (holds canvas + annotation layer)
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('page-wrapper');
+        wrapper.dataset.page = num;
+        wrapper.style.width = viewport.width + 'px';
+        wrapper.style.height = viewport.height + 'px';
+
+        // Canvas
+        const canvas = document.createElement('canvas');
+        canvas.classList.add('page-canvas');
+        canvas.width = hiResViewport.width;
+        canvas.height = hiResViewport.height;
+        canvas.style.width = viewport.width + 'px';
+        canvas.style.height = viewport.height + 'px';
+        wrapper.appendChild(canvas);
+
+        // Annotation layer for clickable links
+        const annoLayer = document.createElement('div');
+        annoLayer.classList.add('annotation-layer');
+        wrapper.appendChild(annoLayer);
+
+        // Insert before error state
+        viewer.insertBefore(wrapper, errorState);
+
+        // Render canvas at high resolution
+        const ctx = canvas.getContext('2d');
+        await page.render({ canvasContext: ctx, viewport: hiResViewport }).promise;
+
+        // Render link annotations
+        const annotations = await page.getAnnotations();
+        for (const anno of annotations) {
+          if (anno.subtype !== 'Link' || !anno.url) continue;
+
+          const rect = anno.rect; // [x1, y1, x2, y2] in PDF coords
+          // Convert PDF coordinates to viewport coordinates
+          const [x1, y1] = viewport.convertToViewportPoint(rect[0], rect[1]);
+          const [x2, y2] = viewport.convertToViewportPoint(rect[2], rect[3]);
+
+          const left = Math.min(x1, x2);
+          const top = Math.min(y1, y2);
+          const width = Math.abs(x2 - x1);
+          const height = Math.abs(y2 - y1);
+
+          const link = document.createElement('a');
+          link.href = anno.url;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.style.left = left + 'px';
+          link.style.top = top + 'px';
+          link.style.width = width + 'px';
+          link.style.height = height + 'px';
+          annoLayer.appendChild(link);
+        }
+      }
+
+      updatePageInfo();
+      updateZoomInfo();
+    }
+
+    function updatePageInfo() {
+      pageInfoEl.textContent = `${currentPage} / ${totalPages}`;
+    }
+
+    function updateZoomInfo() {
+      zoomInfoEl.textContent = `${Math.round(currentScale * 100)}%`;
+    }
+
+    // Scroll-based current page detection
+    function detectCurrentPage() {
+      const wrappers = viewer.querySelectorAll('.page-wrapper');
+      const viewerRect = viewer.getBoundingClientRect();
+      const viewerMid = viewerRect.top + viewerRect.height / 2;
+
+      for (const wrapper of wrappers) {
+        const rect = wrapper.getBoundingClientRect();
+        if (rect.top <= viewerMid && rect.bottom >= viewerMid) {
+          currentPage = parseInt(wrapper.dataset.page);
+          updatePageInfo();
+          break;
+        }
+      }
+    }
+
+    // Navigation
+    function scrollToPage(num) {
+      const wrapper = viewer.querySelector(`.page-wrapper[data-page="${num}"]`);
+      if (wrapper) {
+        wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        currentPage = num;
+        updatePageInfo();
+      }
+    }
+
+    document.getElementById('prevPage').addEventListener('click', () => {
+      if (currentPage > 1) scrollToPage(currentPage - 1);
+    });
+
+    document.getElementById('nextPage').addEventListener('click', () => {
+      if (currentPage < totalPages) scrollToPage(currentPage + 1);
+    });
+
+    // Zoom
+    document.getElementById('zoomIn').addEventListener('click', () => {
+      if (currentScale < MAX_SCALE) {
+        currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
+        renderAllPages();
+      }
+    });
+
+    document.getElementById('zoomOut').addEventListener('click', () => {
+      if (currentScale > MIN_SCALE) {
+        currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
+        renderAllPages();
+      }
+    });
+
+    viewer.addEventListener('scroll', detectCurrentPage, { passive: true });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (currentPage > 1) scrollToPage(currentPage - 1);
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (currentPage < totalPages) scrollToPage(currentPage + 1);
+      } else if (e.key === '+' || e.key === '=') {
+        if (currentScale < MAX_SCALE) {
+          currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
+          renderAllPages();
+        }
+      } else if (e.key === '-') {
+        if (currentScale > MIN_SCALE) {
+          currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
+          renderAllPages();
+        }
+      }
+    });
+
+    // Load PDF
+    try {
+      pdfDoc = await pdfjsLib.getDocument(PDF_URL).promise;
+      totalPages = pdfDoc.numPages;
+      await renderAllPages();
+      loadingOverlay.classList.add('hidden');
+    } catch (err) {
+      console.error('PDF load error:', err);
+      loadingOverlay.classList.add('hidden');
+      errorState.classList.add('visible');
+    }
+  </script>
+</body>
+</html>

@@ -11,7 +11,8 @@ export default defineConfig({
       input: {
         main:        resolve(__dirname, 'index.html'),
         amazonStore: resolve(__dirname, 'amazon-store/index.html'),
-        admin:       resolve(__dirname, 'admin/index.html')
+        admin:       resolve(__dirname, 'admin/index.html'),
+        mediaKit:    resolve(__dirname, 'media-kit/index.html')
       },
     },
   },
