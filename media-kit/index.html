@@ -291,193 +291,195 @@
   </div>
 
   <script type="module">
-    const PDF_URL = '/media-kit.pdf';
+    (async () => {
+      const PDF_URL = '/media-kit.pdf';
 
-    // PDF.js setup
-    const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs');
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs';
+      // PDF.js setup
+      const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs');
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs';
 
-    // State
-    let pdfDoc = null;
-    let currentPage = 1;
-    let totalPages = 0;
-    let currentScale = 1.0;
-    const SCALE_STEP = 0.25;
-    const MIN_SCALE = 0.5;
-    const MAX_SCALE = 4;
+      // State
+      let pdfDoc = null;
+      let currentPage = 1;
+      let totalPages = 0;
+      let currentScale = 1.0;
+      const SCALE_STEP = 0.25;
+      const MIN_SCALE = 0.5;
+      const MAX_SCALE = 4;
 
-    // DOM
-    const viewer = document.getElementById('viewerContainer');
-    const pageInfoEl = document.getElementById('pageInfo');
-    const zoomInfoEl = document.getElementById('zoomInfo');
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    const errorState = document.getElementById('errorState');
+      // DOM
+      const viewer = document.getElementById('viewerContainer');
+      const pageInfoEl = document.getElementById('pageInfo');
+      const zoomInfoEl = document.getElementById('zoomInfo');
+      const loadingOverlay = document.getElementById('loadingOverlay');
+      const errorState = document.getElementById('errorState');
 
-    // Render all pages
-    async function renderAllPages() {
-      // Remove existing page wrappers
-      viewer.querySelectorAll('.page-wrapper').forEach(w => w.remove());
+      // Render all pages
+      async function renderAllPages() {
+        // Remove existing page wrappers
+        viewer.querySelectorAll('.page-wrapper').forEach(w => w.remove());
 
-      // Use devicePixelRatio for crisp rendering on Retina/HiDPI displays
-      const dpr = window.devicePixelRatio || 1;
+        // Use devicePixelRatio for crisp rendering on Retina/HiDPI displays
+        const dpr = window.devicePixelRatio || 1;
 
-      for (let num = 1; num <= totalPages; num++) {
-        const page = await pdfDoc.getPage(num);
-        const viewport = page.getViewport({ scale: currentScale });
+        for (let num = 1; num <= totalPages; num++) {
+          const page = await pdfDoc.getPage(num);
+          const viewport = page.getViewport({ scale: currentScale });
 
-        // Create a higher-resolution viewport for the actual canvas pixels
-        const hiResViewport = page.getViewport({ scale: currentScale * dpr });
+          // Create a higher-resolution viewport for the actual canvas pixels
+          const hiResViewport = page.getViewport({ scale: currentScale * dpr });
 
-        // Page wrapper (holds canvas + annotation layer)
-        const wrapper = document.createElement('div');
-        wrapper.classList.add('page-wrapper');
-        wrapper.dataset.page = num;
-        wrapper.style.width = viewport.width + 'px';
-        wrapper.style.height = viewport.height + 'px';
+          // Page wrapper (holds canvas + annotation layer)
+          const wrapper = document.createElement('div');
+          wrapper.classList.add('page-wrapper');
+          wrapper.dataset.page = num;
+          wrapper.style.width = viewport.width + 'px';
+          wrapper.style.height = viewport.height + 'px';
 
-        // Canvas
-        const canvas = document.createElement('canvas');
-        canvas.classList.add('page-canvas');
-        canvas.width = hiResViewport.width;
-        canvas.height = hiResViewport.height;
-        canvas.style.width = viewport.width + 'px';
-        canvas.style.height = viewport.height + 'px';
-        wrapper.appendChild(canvas);
+          // Canvas
+          const canvas = document.createElement('canvas');
+          canvas.classList.add('page-canvas');
+          canvas.width = hiResViewport.width;
+          canvas.height = hiResViewport.height;
+          canvas.style.width = viewport.width + 'px';
+          canvas.style.height = viewport.height + 'px';
+          wrapper.appendChild(canvas);
 
-        // Annotation layer for clickable links
-        const annoLayer = document.createElement('div');
-        annoLayer.classList.add('annotation-layer');
-        wrapper.appendChild(annoLayer);
+          // Annotation layer for clickable links
+          const annoLayer = document.createElement('div');
+          annoLayer.classList.add('annotation-layer');
+          wrapper.appendChild(annoLayer);
 
-        // Insert before error state
-        viewer.insertBefore(wrapper, errorState);
+          // Insert before error state
+          viewer.insertBefore(wrapper, errorState);
 
-        // Render canvas at high resolution
-        const ctx = canvas.getContext('2d');
-        await page.render({ canvasContext: ctx, viewport: hiResViewport }).promise;
+          // Render canvas at high resolution
+          const ctx = canvas.getContext('2d');
+          await page.render({ canvasContext: ctx, viewport: hiResViewport }).promise;
 
-        // Render link annotations
-        const annotations = await page.getAnnotations();
-        for (const anno of annotations) {
-          if (anno.subtype !== 'Link' || !anno.url) continue;
+          // Render link annotations
+          const annotations = await page.getAnnotations();
+          for (const anno of annotations) {
+            if (anno.subtype !== 'Link' || !anno.url) continue;
 
-          const rect = anno.rect; // [x1, y1, x2, y2] in PDF coords
-          // Convert PDF coordinates to viewport coordinates
-          const [x1, y1] = viewport.convertToViewportPoint(rect[0], rect[1]);
-          const [x2, y2] = viewport.convertToViewportPoint(rect[2], rect[3]);
+            const rect = anno.rect; // [x1, y1, x2, y2] in PDF coords
+            // Convert PDF coordinates to viewport coordinates
+            const [x1, y1] = viewport.convertToViewportPoint(rect[0], rect[1]);
+            const [x2, y2] = viewport.convertToViewportPoint(rect[2], rect[3]);
 
-          const left = Math.min(x1, x2);
-          const top = Math.min(y1, y2);
-          const width = Math.abs(x2 - x1);
-          const height = Math.abs(y2 - y1);
+            const left = Math.min(x1, x2);
+            const top = Math.min(y1, y2);
+            const width = Math.abs(x2 - x1);
+            const height = Math.abs(y2 - y1);
 
-          const link = document.createElement('a');
-          link.href = anno.url;
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.style.left = left + 'px';
-          link.style.top = top + 'px';
-          link.style.width = width + 'px';
-          link.style.height = height + 'px';
-          annoLayer.appendChild(link);
+            const link = document.createElement('a');
+            link.href = anno.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.style.left = left + 'px';
+            link.style.top = top + 'px';
+            link.style.width = width + 'px';
+            link.style.height = height + 'px';
+            annoLayer.appendChild(link);
+          }
         }
-      }
 
-      updatePageInfo();
-      updateZoomInfo();
-    }
-
-    function updatePageInfo() {
-      pageInfoEl.textContent = `${currentPage} / ${totalPages}`;
-    }
-
-    function updateZoomInfo() {
-      zoomInfoEl.textContent = `${Math.round(currentScale * 100)}%`;
-    }
-
-    // Scroll-based current page detection
-    function detectCurrentPage() {
-      const wrappers = viewer.querySelectorAll('.page-wrapper');
-      const viewerRect = viewer.getBoundingClientRect();
-      const viewerMid = viewerRect.top + viewerRect.height / 2;
-
-      for (const wrapper of wrappers) {
-        const rect = wrapper.getBoundingClientRect();
-        if (rect.top <= viewerMid && rect.bottom >= viewerMid) {
-          currentPage = parseInt(wrapper.dataset.page);
-          updatePageInfo();
-          break;
-        }
-      }
-    }
-
-    // Navigation
-    function scrollToPage(num) {
-      const wrapper = viewer.querySelector(`.page-wrapper[data-page="${num}"]`);
-      if (wrapper) {
-        wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        currentPage = num;
         updatePageInfo();
+        updateZoomInfo();
       }
-    }
 
-    document.getElementById('prevPage').addEventListener('click', () => {
-      if (currentPage > 1) scrollToPage(currentPage - 1);
-    });
-
-    document.getElementById('nextPage').addEventListener('click', () => {
-      if (currentPage < totalPages) scrollToPage(currentPage + 1);
-    });
-
-    // Zoom
-    document.getElementById('zoomIn').addEventListener('click', () => {
-      if (currentScale < MAX_SCALE) {
-        currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
-        renderAllPages();
+      function updatePageInfo() {
+        pageInfoEl.textContent = `${currentPage} / ${totalPages}`;
       }
-    });
 
-    document.getElementById('zoomOut').addEventListener('click', () => {
-      if (currentScale > MIN_SCALE) {
-        currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
-        renderAllPages();
+      function updateZoomInfo() {
+        zoomInfoEl.textContent = `${Math.round(currentScale * 100)}%`;
       }
-    });
 
-    viewer.addEventListener('scroll', detectCurrentPage, { passive: true });
+      // Scroll-based current page detection
+      function detectCurrentPage() {
+        const wrappers = viewer.querySelectorAll('.page-wrapper');
+        const viewerRect = viewer.getBoundingClientRect();
+        const viewerMid = viewerRect.top + viewerRect.height / 2;
 
-    // Keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        e.preventDefault();
+        for (const wrapper of wrappers) {
+          const rect = wrapper.getBoundingClientRect();
+          if (rect.top <= viewerMid && rect.bottom >= viewerMid) {
+            currentPage = parseInt(wrapper.dataset.page);
+            updatePageInfo();
+            break;
+          }
+        }
+      }
+
+      // Navigation
+      function scrollToPage(num) {
+        const wrapper = viewer.querySelector(`.page-wrapper[data-page="${num}"]`);
+        if (wrapper) {
+          wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          currentPage = num;
+          updatePageInfo();
+        }
+      }
+
+      document.getElementById('prevPage').addEventListener('click', () => {
         if (currentPage > 1) scrollToPage(currentPage - 1);
-      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        e.preventDefault();
+      });
+
+      document.getElementById('nextPage').addEventListener('click', () => {
         if (currentPage < totalPages) scrollToPage(currentPage + 1);
-      } else if (e.key === '+' || e.key === '=') {
+      });
+
+      // Zoom
+      document.getElementById('zoomIn').addEventListener('click', () => {
         if (currentScale < MAX_SCALE) {
           currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
           renderAllPages();
         }
-      } else if (e.key === '-') {
+      });
+
+      document.getElementById('zoomOut').addEventListener('click', () => {
         if (currentScale > MIN_SCALE) {
           currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
           renderAllPages();
         }
-      }
-    });
+      });
 
-    // Load PDF
-    try {
-      pdfDoc = await pdfjsLib.getDocument(PDF_URL).promise;
-      totalPages = pdfDoc.numPages;
-      await renderAllPages();
-      loadingOverlay.classList.add('hidden');
-    } catch (err) {
-      console.error('PDF load error:', err);
-      loadingOverlay.classList.add('hidden');
-      errorState.classList.add('visible');
-    }
+      viewer.addEventListener('scroll', detectCurrentPage, { passive: true });
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (currentPage > 1) scrollToPage(currentPage - 1);
+        } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (currentPage < totalPages) scrollToPage(currentPage + 1);
+        } else if (e.key === '+' || e.key === '=') {
+          if (currentScale < MAX_SCALE) {
+            currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
+            renderAllPages();
+          }
+        } else if (e.key === '-') {
+          if (currentScale > MIN_SCALE) {
+            currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
+            renderAllPages();
+          }
+        }
+      });
+
+      // Load PDF
+      try {
+        pdfDoc = await pdfjsLib.getDocument(PDF_URL).promise;
+        totalPages = pdfDoc.numPages;
+        await renderAllPages();
+        loadingOverlay.classList.add('hidden');
+      } catch (err) {
+        console.error('PDF load error:', err);
+        loadingOverlay.classList.add('hidden');
+        errorState.classList.add('visible');
+      }
+    })();
   </script>
 </body>
 </html>
