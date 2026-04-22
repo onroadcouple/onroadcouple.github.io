@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
 :root {
-  --primary: #f59e0b; /* Amazon orange */
-  --primary-hover: #d97706;
+  --primary: #f15714;
+  --primary-hover: #f75710;
   --bg-dark: #0f172a;
   --bg-panel: #1e293b;
   --text-main: #f8fafc;
@@ -20,15 +22,23 @@ body {
   flex-direction: column;
 }
 
+h1, h2, h3, .logo {
+  font-family: 'Instrument Sans', sans-serif;
+}
+
 /* Header */
 .admin-header {
   background: var(--bg-panel);
   border-bottom: 1px solid var(--border);
-  padding: 1rem 0;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
 }
 
 .header-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;
@@ -61,8 +71,8 @@ body {
 
 /* Layout */
 .admin-container {
-  max-width: 800px;
-  margin: 3rem auto;
+  max-width: 900px;
+  margin: 2rem auto;
   padding: 0 1.5rem;
   width: 100%;
   box-sizing: border-box;
@@ -107,11 +117,74 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .panel-header h2 {
   margin: 0;
+}
+
+/* ─── Tab Navigation ───────────────────────────────────────────── */
+.admin-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-dark);
+  padding: 4px;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+}
+
+.admin-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.admin-tab:hover {
+  color: var(--text-main);
+  background: rgba(255,255,255,0.05);
+}
+
+.admin-tab.active {
+  background: var(--primary);
+  color: #000;
+  box-shadow: 0 2px 8px rgba(245,158,11,0.3);
+}
+
+.admin-tab i {
+  font-size: 1rem;
+}
+
+/* Tab Content */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+.tab-content h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
 }
 
 /* Forms */
@@ -147,9 +220,19 @@ input, select, textarea {
   transition: border-color 0.2s;
 }
 
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
 input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--primary);
+}
+
+input[type="file"] {
+  padding: 0.5rem;
+  font-size: 0.85rem;
 }
 
 small {
@@ -233,6 +316,14 @@ small {
   .actions-col {
     white-space: normal;
   }
+  .admin-tabs {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .admin-tab {
+    justify-content: flex-start;
+    padding: 10px 14px;
+  }
 }
 
 /* Manage Section */
@@ -293,4 +384,83 @@ small {
 .form-actions {
   display: flex;
   gap: 1rem;
+}
+
+/* ─── Status Badges ────────────────────────────────────────────── */
+.status-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.status-badge.paid {
+  background: rgba(16,185,129,.15);
+  color: var(--success);
+}
+
+.status-badge.created {
+  background: rgba(245,158,11,.15);
+  color: var(--primary);
+}
+
+.status-badge.failed {
+  background: rgba(239,68,68,.15);
+  color: var(--error);
+}
+
+.status-badge.active {
+  background: rgba(16,185,129,.15);
+  color: var(--success);
+}
+
+.status-badge.inactive {
+  background: rgba(148,163,184,.15);
+  color: var(--text-muted);
+}
+
+/* ─── Toggle Switch ────────────────────────────────────────────── */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--border);
+  border-radius: 22px;
+  transition: .3s;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: var(--success);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(18px);
 }

@@ -9,6 +9,16 @@ dist/
 .env.local
 .env.*.local
 
+# Firebase / Functions
+.firebase/
+functions/lib/
+functions/node_modules/
+*-debug.log
+.runtimeconfig.json
+
+# Local Dev Data
+.dev-orders.json
+
 # Editor / OS
 .DS_Store
 *.log

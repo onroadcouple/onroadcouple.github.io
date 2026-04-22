@@ -1,0 +1,45 @@
+{
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs20",
+    "predeploy": [
+      "npm --prefix \"$RESOURCE_DIR\" run build"
+    ]
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "hosting": {
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/admin/**",
+        "destination": "/admin/index.html"
+      },
+      {
+        "source": "/itineraries/**",
+        "destination": "/itineraries/index.html"
+      },
+      {
+        "source": "/amazon-store/**",
+        "destination": "/amazon-store/index.html"
+      },
+      {
+        "source": "/media-kit/**",
+        "destination": "/media-kit/index.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
