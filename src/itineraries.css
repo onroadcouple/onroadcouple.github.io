@@ -364,7 +364,7 @@ h1, h2, h3, .logo-text {
 .detail-image {
   width: 100%;
   display: block;
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/4;
   object-fit: cover;
 }
 
